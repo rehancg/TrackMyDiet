@@ -11,7 +11,7 @@ const MainStackNavigator = createStackNavigator();
 const MainStack: React.FC = () => {
     return (
         <MainStackNavigator.Navigator
-            initialRouteName='Home'
+            initialRouteName='Login'
             headerMode='none'
         >
             <MainStackNavigator.Screen
