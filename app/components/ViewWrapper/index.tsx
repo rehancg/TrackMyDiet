@@ -1,43 +1,51 @@
 import React, { useEffect, useState, useRef, memo } from 'react'
-import { Animated, StyleSheet, View, ViewStyle, ActivityIndicator } from 'react-native';
+import { Animated, StyleSheet, View, ViewStyle, ActivityIndicator, StatusBar, StatusBarStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import theme from 'app/theme/defaultTheme';
 
 interface IProps {
     isReady: boolean,
     withAnimation?: boolean,
     withSafeAreaView?: boolean,
     children?: React.ReactNode,
-    style?: ViewStyle
+    style?: ViewStyle,
+    safeAreaBackgroundColor?: string,
+    barStyle?: StatusBarStyle,
+    loaderColor?: string
 }
 
+interface IAcitivityIndicator {
+    color?: string
+}
 // TODO:: Need to replace with custom activity indicator
-const CustomActivityIndicator: React.FC = () => {
+const CustomActivityIndicator: React.FC<IAcitivityIndicator> = (props) => {
     return (
         <View style={styles.activityIndicatorContainer}>
-            <ActivityIndicator />
+            <ActivityIndicator color={props.color || theme.ACTIVITY_INDICATOR_DEFAULT} />
         </View>
     )
 }
 
-const BodyWithSafeAreaView: React.FC<IProps> = (props) => {
+const RenderContent: React.FC<IProps> = (props) => {
+    const backgroundColor = props.safeAreaBackgroundColor;
     return (
-        <SafeAreaView style={styles.container}>
-            {
-                props.isReady ? <View style={[styles.container, props.style]}>
+        <>
+            <StatusBar barStyle={props.barStyle || theme.BAR_STYLE_DEFAULT} />
+            {props.withSafeAreaView ? (
+                <SafeAreaView style={[styles.container, { backgroundColor }]} >
                     {props.children}
-                </View> : <CustomActivityIndicator />
+                </SafeAreaView>
+            ) : (
+                    <>
+                        {props.children}
+                    </>
+                )
             }
-        </SafeAreaView>
+        </>
     )
 }
 
-const BodyWithoutSafeAreaView: React.FC<IProps> = (props) => {
-    return (
-        props.isReady ? <View style={[styles.container, props.style]}>
-            {props.children}
-        </View> : <CustomActivityIndicator />
-    )
-}
+
 
 const ViewWrapper: React.FC<IProps> = (props) => {
     const [animation, _] = useState(new Animated.Value(0))
@@ -58,21 +66,27 @@ const ViewWrapper: React.FC<IProps> = (props) => {
 
     return (
         <View style={styles.container}>
-            <Animated.View style={[styles.container, {
-                transform: [
+            <RenderContent {...props}>
+                <Animated.View style={[styles.container, {
+                    transform: [
+                        {
+                            translateY: props.withAnimation ? animation.interpolate({
+                                inputRange: [0, 1],
+                                outputRange: [-5, 0],
+                            }) : 1
+                        }
+                    ]
+                }]}>
                     {
-                        translateY: props.withAnimation ? animation.interpolate({
-                            inputRange: [0, 1],
-                            outputRange: [-5, 0],
-                        }) : 1
+                        props.isReady ? (
+                            <View style={[styles.container, props.style]}>
+                                {props.children}
+                            </View>
+                        ) : <CustomActivityIndicator color={props.loaderColor} />
                     }
-                ]
-            }]}>
-                {
-                    props.withSafeAreaView ? <BodyWithSafeAreaView {...props} />
-                        : <BodyWithoutSafeAreaView {...props} />
-                }
-            </Animated.View>
+
+                </Animated.View>
+            </RenderContent>
         </View>
     )
 }

@@ -3,13 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { NavigationOptions } from '../helpers'
 import Login from 'app/screens/Login';
-import Splash from 'app/screens/Splash';
+import Welcome from 'app/screens/Welcome';
 
 const LoginNavigatorStack = createStackNavigator();
 const LoginNavigator: React.FC = () => {
     return (
         <LoginNavigatorStack.Navigator
-            initialRouteName='SplashScreen'
+            initialRouteName='WelcomeScreen'
             screenOptions={{
                 ...NavigationOptions.stackNavigator.default
             }}
@@ -20,9 +20,9 @@ const LoginNavigator: React.FC = () => {
                 component={Login}
             />
             <LoginNavigatorStack.Screen
-                name='SplashScreen'
+                name='WelcomeScreen'
                 options={{ headerShown: false }}
-                component={Splash}
+                component={Welcome}
             />
         </LoginNavigatorStack.Navigator>
     )

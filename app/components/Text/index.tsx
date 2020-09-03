@@ -4,7 +4,7 @@ import { TextTypes } from 'app/types/entity/TextInput';
 
 interface IProps {
     type?: TextTypes,
-    style?: TextStyle,
+    style?: TextStyle | TextStyle[],
     children: string
 }
 
@@ -21,6 +21,7 @@ const CustomText: React.FC<IProps> = (props) => {
             textStyles.push(styles.body);
             break;
         default:
+            textStyles.push(styles.body);
             break;
     }
 
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
 
     },
     heading: {
-        fontSize: 22
+        fontSize: 32
     },
     body: {
 
