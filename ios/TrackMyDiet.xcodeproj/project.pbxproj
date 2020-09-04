@@ -18,6 +18,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* TrackMyDietTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TrackMyDietTests.m */; };
 		3879CF847ABA15752AB8611D /* libPods-TrackMyDiet-TrackMyDietTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BB6F26A9C8D9D7B60A2822 /* libPods-TrackMyDiet-TrackMyDietTests.a */; };
 		515EE63B24FE8E360088CFC3 /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A7EBBC875E9D4E58B315C02A /* icomoon.ttf */; };
+		51DA68D025029AA1000CE5B6 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A134019B8974B7B9BCBEAD5 /* Poppins-Medium.ttf */; };
+		51DA68D125029AA1000CE5B6 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F09412F1BF5D42BEA8C0A9FE /* Poppins-Regular.ttf */; };
+		51DA68D225029AA1000CE5B6 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F596A002A9247308374C8D6 /* Poppins-SemiBold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -63,9 +66,11 @@
 		788D97ABBFF04C34B9A426FC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		7B46C55628A445C68AC9BAAD /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TrackMyDiet/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A134019B8974B7B9BCBEAD5 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../app/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		8EC3B8E82D7E446182D1C479 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		910158D2A4BD418395AFA7DE /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		91D7D9C2A7244120B1807E64 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		9F596A002A9247308374C8D6 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-SemiBold.ttf"; path = "../app/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		A07DFF4BAF85663F9FDA7398 /* Pods-TrackMyDiet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackMyDiet.debug.xcconfig"; path = "Target Support Files/Pods-TrackMyDiet/Pods-TrackMyDiet.debug.xcconfig"; sourceTree = "<group>"; };
 		A7EBBC875E9D4E58B315C02A /* icomoon.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = icomoon.ttf; path = ../app/assets/fonts/icomoon.ttf; sourceTree = "<group>"; };
 		B4BB6F26A9C8D9D7B60A2822 /* libPods-TrackMyDiet-TrackMyDietTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrackMyDiet-TrackMyDietTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +81,7 @@
 		E7A99146CC6645F7BBBA9CAA /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F09412F1BF5D42BEA8C0A9FE /* Poppins-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Regular.ttf"; path = "../app/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		FA961DA7F5014277BF8CB94A /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +226,9 @@
 				E7A99146CC6645F7BBBA9CAA /* Octicons.ttf */,
 				E1A6576D585342F3B6A508B3 /* SimpleLineIcons.ttf */,
 				451C86A4773B42B3BCE18427 /* Zocial.ttf */,
+				8A134019B8974B7B9BCBEAD5 /* Poppins-Medium.ttf */,
+				F09412F1BF5D42BEA8C0A9FE /* Poppins-Regular.ttf */,
+				9F596A002A9247308374C8D6 /* Poppins-SemiBold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -364,6 +373,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51DA68D025029AA1000CE5B6 /* Poppins-Medium.ttf in Resources */,
+				51DA68D125029AA1000CE5B6 /* Poppins-Regular.ttf in Resources */,
+				51DA68D225029AA1000CE5B6 /* Poppins-SemiBold.ttf in Resources */,
 				515EE63B24FE8E360088CFC3 /* icomoon.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,

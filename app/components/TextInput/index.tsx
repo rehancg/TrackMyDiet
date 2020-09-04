@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { TextInput, StyleSheet, TextStyle } from 'react-native';
-import { TextTypes } from 'app/types/entity/TextInput';
+import { TextTypes } from 'app/types/entity/Texts';
 
 interface IProps {
     type: TextTypes,

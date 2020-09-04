@@ -3,13 +3,15 @@ import { StatusBarStyle } from "react-native";
 const ColorPallet = {
     WHITE: '#fff',
     BLACK: '#000',
+    GREY: '#676767',
     GREEN: '#32c359',
 }
 
 const theme = {
     // Text colors
-    TEXT_COLOR_PRIMARY: ColorPallet.BLACK,
+    TEXT_COLOR_PRIMARY: ColorPallet.GREY,
     TEXT_COLOR_SECONDARY: ColorPallet.WHITE,
+    TEXT_COLOR_TERTIARY: ColorPallet.GREEN,
 
     // Background colors
     BACKGROUND_PRIMARY: ColorPallet.GREEN,

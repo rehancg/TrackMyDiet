@@ -6,6 +6,13 @@ export default {
             'getStarted': 'Let\'s get started'
         }
     },
+    LanguageSelect: {
+        'index': {
+            'title_1': 'What\'s your\npreferred',
+            'title_2': 'language',
+            'continue': 'Continue',
+        }
+    },
     Login: {
         'index': {
             'welcome': 'Hello there'

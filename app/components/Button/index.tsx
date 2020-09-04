@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, ViewStyle, GestureResponderEvent, TextStyle } fr
 import Text from 'app/components/Text';
 import { ButtonTypes } from 'app/types/entity/Button';
 import theme from 'app/theme/defaultTheme';
+import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 
 interface IProps {
     title: string,
@@ -44,33 +45,35 @@ const CustomButton: React.FC<IProps> = (props) => {
             style={({ pressed }) => [buttonContainerStyles, props.style, { opacity: pressed ? 0.8 : 1 }]}
             onPress={props.onPress}
         >
-            <Text style={buttonTextStyles}>{props.title}</Text>
+            <Text style={buttonTextStyles} weight={FontWeights.MEDIUM}>{props.title}</Text>
         </Pressable>
     )
 }
 
 const styles = StyleSheet.create({
     flexButton: {
-        flex: 1,
+        // flex: 1,
         alignSelf: 'stretch'
     },
     defaultButton: {
-        height: 45,
+        height: 48,
         minWidth: 100,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'flex-start'
     },
     defaultButtonText: {
-        paddingHorizontal: 16,
+        paddingHorizontal: 24,
     },
     // Primary button styles
     primaryButtonContainer: {
         backgroundColor: theme.BUTTON_PRIMARY_BACKGROUND,
         borderWidth: 0,
+        borderRadius: 4
     },
     primaryButtonTexts: {
-        color: theme.BUTTON_PRIMARY_TEXT
+        color: theme.BUTTON_PRIMARY_TEXT,
+        fontSize: 18
     },
     // Secondary button styles
     secondaryButtonContainer: {
@@ -79,7 +82,8 @@ const styles = StyleSheet.create({
         borderColor: theme.BUTTON_SECONDARY_BORDER
     },
     secondaryButtonTexts: {
-        color: theme.BUTTON_SECONDARY_TEXT
+        color: theme.BUTTON_SECONDARY_TEXT,
+        fontSize: 16
     },
     // Action button styles
     actionButtonContainer: {
@@ -87,7 +91,8 @@ const styles = StyleSheet.create({
         borderWidth: 0,
     },
     actionButtonTexts: {
-        color: theme.BUTTON_ACTION_TEXT
+        color: theme.BUTTON_ACTION_TEXT,
+        fontSize: 18
     },
 })
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, memo } from 'react'
 import { Animated, StyleSheet, View, ViewStyle, ActivityIndicator, StatusBar, StatusBarStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from 'app/theme/defaultTheme';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface IProps {
     isReady: boolean,
@@ -27,10 +28,10 @@ const CustomActivityIndicator: React.FC<IAcitivityIndicator> = (props) => {
 }
 
 const RenderContent: React.FC<IProps> = (props) => {
-    const backgroundColor = props.safeAreaBackgroundColor;
+    const backgroundColor = props.safeAreaBackgroundColor || theme.BACKGROUND_SECONDARY;
     return (
         <>
-            <StatusBar barStyle={props.barStyle || theme.BAR_STYLE_DEFAULT} />
+            <StatusBar barStyle={props.barStyle || theme.BAR_STYLE_DEFAULT} backgroundColor={backgroundColor} />
             {props.withSafeAreaView ? (
                 <SafeAreaView style={[styles.container, { backgroundColor }]} >
                     {props.children}
@@ -79,9 +80,11 @@ const ViewWrapper: React.FC<IProps> = (props) => {
                 }]}>
                     {
                         props.isReady ? (
-                            <View style={[styles.container, props.style]}>
-                                {props.children}
-                            </View>
+                            <ScrollView bounces={false} contentContainerStyle={styles.scrollWrapper}>
+                                <View style={[styles.container, props.style]}>
+                                    {props.children}
+                                </View>
+                            </ScrollView>
                         ) : <CustomActivityIndicator color={props.loaderColor} />
                     }
 
@@ -93,7 +96,11 @@ const ViewWrapper: React.FC<IProps> = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: theme.BACKGROUND_SECONDARY
+    },
+    scrollWrapper: {
+        flexGrow: 1
     },
     activityIndicatorContainer: {
         flex: 1,
