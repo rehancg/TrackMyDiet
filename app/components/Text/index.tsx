@@ -1,14 +1,15 @@
 import React, { memo } from 'react';
-import { Text, StyleSheet, TextStyle } from 'react-native';
+import { Text, StyleSheet, TextStyle, Animated } from 'react-native';
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import { material, human } from 'react-native-typography';
 import theme from 'app/theme/defaultTheme';
 
 interface IProps {
     type?: TextTypes,
-    style?: TextStyle | TextStyle[],
+    style?: TextStyle | TextStyle[] | object,
     children: string | React.ReactNode,
-    weight?: FontWeights
+    weight?: FontWeights,
+    animated?: boolean
 }
 
 const CustomText: React.FC<IProps> = (props) => {
@@ -52,7 +53,8 @@ const CustomText: React.FC<IProps> = (props) => {
             break;
     }
 
-    return <Text allowFontScaling={false} style={[...textStyles, props.style]}>{props.children}</Text>
+    return props.animated ? <Animated.Text allowFontScaling={false} style={[...textStyles, props.style]}>{props.children}</Animated.Text> :
+        <Text allowFontScaling={false} style={[...textStyles, props.style]}>{props.children}</Text>
 }
 
 const styles = StyleSheet.create({

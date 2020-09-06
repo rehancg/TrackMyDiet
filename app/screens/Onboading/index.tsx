@@ -13,7 +13,7 @@ import { Gender } from 'app/constants/gender';
 import Text from 'app/components/Text';
 import { TextTypes } from 'app/types/entity/Texts';
 import SetAge from './SetAge';
-import { DEVICE_HEIGHT } from 'app/utils/UIHelper';
+import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
 
 const numOfPages = 3;
 
@@ -21,9 +21,11 @@ const Onboading: React.FC = (props) => {
     const viewPagerRef = createRef<ViewPager>();
     const { t } = useTranslation('Onboading');
     const [gender, setGender] = useState(Gender.MALE);
+    const [age, setAge] = useState(21);
     const [page, setPage] = useState(0);
 
     const navigateNext = () => {
+
         viewPagerRef.current?.setPage(page + 1)
     }
 
@@ -42,9 +44,17 @@ const Onboading: React.FC = (props) => {
             <ProgressBar progress={calculateProgress()} style={styles.progressBar} />
             <Text style={styles.progressText} type={TextTypes.PARAGRAPH}>{`${t('index.progressPrefix')} ${page + 1}/${numOfPages}`}</Text>
             <ViewPager ref={viewPagerRef} style={styles.viewPager} initialPage={0} scrollEnabled={false} onPageSelected={(e) => setPage(e.nativeEvent.position)}>
-                <YourName />
-                <SelectGender selectedGender={gender} onSelect={(id) => setGender(id)} />
-                <SetAge />
+                <View>
+                    <YourName key={'name'} />
+                </View>
+
+                <View>
+                    <SelectGender key={'gender'} selectedGender={gender} onSelect={(id) => setGender(id)} />
+                </View>
+
+                <View>
+                    <SetAge key={'age'} age={age} onChangeAge={age => setAge(age)} />
+                </View>
             </ViewPager>
 
             {/* Action buttons container */}
@@ -69,6 +79,8 @@ const styles = StyleSheet.create({
         marginTop: 8
     },
     viewPager: {
+        // flex: 1,
+        width: DEVICE_WIDTH,
         height: DEVICE_HEIGHT * 0.7,
     },
     actionButtons: {

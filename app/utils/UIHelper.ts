@@ -8,17 +8,22 @@ export const useSize = (): [
     {
         height: number;
         width: number;
+        x: number,
+        y: number
     },
     (event: LayoutChangeEvent) => void
 ] => {
     const [size, setSize] = useState<{
         height: number;
         width: number;
+        x: number,
+        y: number
     } | null>(null);
 
     const onLayout = useCallback((event: LayoutChangeEvent) => {
-        const { width, height } = event.nativeEvent.layout;
-        setSize({ width, height });
+        console.log("Layout ", event.nativeEvent.layout)
+        const { width, height, x, y } = event.nativeEvent.layout;
+        setSize({ width, height, x, y });
     }, []);
 
     return [size!, onLayout];
