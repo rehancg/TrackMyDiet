@@ -14,8 +14,10 @@ import Text from 'app/components/Text';
 import { TextTypes } from 'app/types/entity/Texts';
 import SetAge from './SetAge';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
+import SetHeight from './SetHeight';
+import SetWeight from './SetWeight';
 
-const numOfPages = 3;
+const numOfPages = 5;
 
 const Onboading: React.FC = (props) => {
     const viewPagerRef = createRef<ViewPager>();
@@ -55,6 +57,14 @@ const Onboading: React.FC = (props) => {
                 <View>
                     <SetAge key={'age'} age={age} onChangeAge={age => setAge(age)} />
                 </View>
+
+                <View>
+                    <SetHeight key={'height'} />
+                </View>
+
+                <View>
+                    <SetWeight key={'weight'} />
+                </View>
             </ViewPager>
 
             {/* Action buttons container */}
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
     viewPager: {
         // flex: 1,
         width: DEVICE_WIDTH,
-        height: DEVICE_HEIGHT * 0.7,
+        height: DEVICE_HEIGHT * 0.71,
     },
     actionButtons: {
         marginTop: 'auto',

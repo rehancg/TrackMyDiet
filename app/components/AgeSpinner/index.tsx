@@ -74,13 +74,6 @@ const AgeSpinner: React.FC<IProps> = (props) => {
     const [size, onLayout] = useSize();
     const data = range(12, 100)
 
-    // useEffect(() => {
-    //     if (props.defaultAge)
-    //         setTimeout(() => {
-    //             setDefaultValue(props.defaultAge);
-    //         }, 500);
-    // }, [])
-
     useFocusEffect(() => {
         if (props.defaultAge)
             setTimeout(() => {
@@ -93,7 +86,7 @@ const AgeSpinner: React.FC<IProps> = (props) => {
     }
 
     const onMomentumScrollEnd = () => {
-        const scrollOffset = flatListRef.current?.props.contentOffset?.y
+        const scrollOffset = (scrollY as any)._value;
         // const scrollY = scrollOffset?.contentOffset.y;
         const focusIndex = (scrollOffset! / ITEM_HEIGHT) + 2;
         props.onChangeAge(data[focusIndex]);
@@ -110,7 +103,7 @@ const AgeSpinner: React.FC<IProps> = (props) => {
         index: number;
         highestMeasuredFrameIndex: number;
         averageItemLength: number;
-    }) => void) = (error) => { console.log("scroll to index failed", error) }
+    }) => void) = (error) => { }
 
     return (
         <>

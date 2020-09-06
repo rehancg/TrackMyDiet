@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
-import { Text, StyleSheet, TextStyle, Animated } from 'react-native';
+import { Text, StyleSheet, TextStyle, Animated, TextProperties } from 'react-native';
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import { material, human } from 'react-native-typography';
 import theme from 'app/theme/defaultTheme';
 
-interface IProps {
+interface IProps extends TextProperties {
     type?: TextTypes,
     style?: TextStyle | TextStyle[] | object,
     children: string | React.ReactNode,

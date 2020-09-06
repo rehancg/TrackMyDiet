@@ -49,6 +49,24 @@ export default {
         },
         'age': {
             'title': 'How Old are you?'
+        },
+        'height': {
+            'title': 'Select your Height',
+        },
+        'weight': {
+            'title': 'Select your Weight',
+        }
+    },
+    Ruler: {
+        'index': {
+            'title': 'Drag top - down the ruler',
+            'meters': 'Meters',
+            'feets': 'Feets'
+        }
+    },
+    Scale: {
+        'index': {
+            'title': 'Drag top - down the scale',
         }
     },
     Login: {

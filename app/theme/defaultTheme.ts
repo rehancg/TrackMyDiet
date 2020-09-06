@@ -48,7 +48,20 @@ const theme = {
 
     // Progress bar
     PROGRESS_BAR_DEFUALT: ColorPallet.LIGHT_GREY,
-    PROGRESS_BAR_FILLED: ColorPallet.GREEN
+    PROGRESS_BAR_FILLED: ColorPallet.GREEN,
+
+    // Toggle Button
+    TOGGLE_BUTTON_ACTIVE_BACKGROUND: ColorPallet.GREEN,
+    TOGGLE_BUTTON_ACTIVE_TEXT: ColorPallet.WHITE,
+    TOGGLE_BUTTON_ACTIVE_BORDER: ColorPallet.GREEN,
+
+    TOGGLE_BUTTON_DEFAULT_BACKGROUND: ColorPallet.WHITE,
+    TOGGLE_BUTTON_DEFULT_TEXT: ColorPallet.GREEN,
+    TOGGLE_BUTTON_DEFAULT_BORDER: ColorPallet.LIGHT_GREY,
+
+    // Slider
+    SLIDER_BACKGROUND: ColorPallet.LIGHT_GREY,
+    SLIDER_THUMB: ColorPallet.GREEN
 }
 
 export default theme;
