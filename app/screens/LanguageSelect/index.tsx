@@ -10,12 +10,17 @@ import { DEVICE_HEIGHT } from 'app/utils/UIHelper';
 import LanguageCard from './LanguageCard';
 import { Languages } from 'app/constants/languages';
 import { useTranslation } from 'react-i18next';
+import NavigationUtils from 'app/utils/NavigationUtils';
 
 
 
 const LanguageSelect: React.FC = () => {
     const [selectedLang, setSelectedLang] = useState(1); // Default lang en -> id = 1
     const { t } = useTranslation('LanguageSelect');
+
+    const onClickNext = () => {
+        NavigationUtils.navigate('RequestOTPScreen');
+    }
 
     return (
         <ViewWrapper isReady={true} withAnimation withSafeAreaView>
@@ -32,7 +37,7 @@ const LanguageSelect: React.FC = () => {
             </View>
 
             {/* Continue button */}
-            <Button title={t('index.continue')} onPress={() => { }} flex style={styles.footerButton} />
+            <Button title={t('index.continue')} onPress={onClickNext} flex style={styles.footerButton} />
         </ViewWrapper>
     )
 }

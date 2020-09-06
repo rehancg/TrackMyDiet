@@ -5,18 +5,23 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import LoginNavigator from './LoginNavigator';
 import HomeNavigator from './HomeNavigator';
+import OnBoadingNavigator from './OnboadingNavigator';
 import { navigationRef } from 'app/utils/NavigationUtils'
 
 const MainStackNavigator = createStackNavigator();
 const MainStack: React.FC = () => {
     return (
         <MainStackNavigator.Navigator
-            initialRouteName='Login'
+            initialRouteName='OnBoading'
             headerMode='none'
         >
             <MainStackNavigator.Screen
                 name='Login'
                 component={LoginNavigator}
+            />
+            <MainStackNavigator.Screen
+                name='OnBoading'
+                component={OnBoadingNavigator}
             />
             <MainStackNavigator.Screen
                 name='Home'

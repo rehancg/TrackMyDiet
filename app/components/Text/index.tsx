@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Text, StyleSheet, TextStyle } from 'react-native';
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import { material, human } from 'react-native-typography';
+import theme from 'app/theme/defaultTheme';
 
 interface IProps {
     type?: TextTypes,
@@ -56,7 +57,7 @@ const CustomText: React.FC<IProps> = (props) => {
 
 const styles = StyleSheet.create({
     fontStyles: {
-
+        color: theme.TEXT_COLOR_PRIMARY
     },
     heading: {
         fontSize: 30

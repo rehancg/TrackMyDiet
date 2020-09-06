@@ -5,6 +5,8 @@ import { NavigationOptions } from '../helpers'
 import Login from 'app/screens/Login';
 import Welcome from 'app/screens/Welcome';
 import LanguageSelect from 'app/screens/LanguageSelect';
+import RequestOTP from 'app/screens/RequestOTP';
+import VerifyOTP from 'app/screens/VerifyOTP';
 
 const LoginNavigatorStack = createStackNavigator();
 const LoginNavigator: React.FC = () => {
@@ -29,6 +31,16 @@ const LoginNavigator: React.FC = () => {
                 name='LanguageSelectScreen'
                 options={{ headerShown: false }}
                 component={LanguageSelect}
+            />
+            <LoginNavigatorStack.Screen
+                name='RequestOTPScreen'
+                options={{ headerShown: false }}
+                component={RequestOTP}
+            />
+            <LoginNavigatorStack.Screen
+                name='VerifyOTPScreen'
+                options={{ headerShown: false }}
+                component={VerifyOTP}
             />
         </LoginNavigatorStack.Navigator>
     )

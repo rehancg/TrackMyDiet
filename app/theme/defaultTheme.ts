@@ -4,6 +4,8 @@ const ColorPallet = {
     WHITE: '#fff',
     BLACK: '#000',
     GREY: '#676767',
+    LIGHT_GREY: '#D6D6D6',
+    DARK_GREY: '#707070',
     GREEN: '#32c359',
 }
 
@@ -12,6 +14,12 @@ const theme = {
     TEXT_COLOR_PRIMARY: ColorPallet.GREY,
     TEXT_COLOR_SECONDARY: ColorPallet.WHITE,
     TEXT_COLOR_TERTIARY: ColorPallet.GREEN,
+
+    // Text input colors
+    TEXT_INPUT_PRIMARY_BACKGROUND_COLOR: `${ColorPallet.LIGHT_GREY}40`,
+    TEXT_INPUT_PRIMARY_PLACEHOLDER_COLOR: `${ColorPallet.DARK_GREY}40`,
+    TEXT_INPUT_PRIMARY_TEXT_COLOR: ColorPallet.GREY,
+    TEXT_INPUT_PRIMARY_BORDER_COLOR: `${ColorPallet.DARK_GREY}40`,
 
     // Background colors
     BACKGROUND_PRIMARY: ColorPallet.GREEN,
@@ -36,7 +44,11 @@ const theme = {
 
     // Activity indicator
     ACTIVITY_INDICATOR_DEFAULT: ColorPallet.BLACK,
-    ACTIVITY_INDICATOR_SECONDARY: ColorPallet.WHITE
+    ACTIVITY_INDICATOR_SECONDARY: ColorPallet.WHITE,
+
+    // Progress bar
+    PROGRESS_BAR_DEFUALT: ColorPallet.LIGHT_GREY,
+    PROGRESS_BAR_FILLED: ColorPallet.GREEN
 }
 
 export default theme;

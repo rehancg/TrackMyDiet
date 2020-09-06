@@ -1,40 +1,24 @@
 import React, { memo } from 'react';
-import { TextInput, StyleSheet, TextStyle } from 'react-native';
-import { TextTypes } from 'app/types/entity/Texts';
+import { TextInput, StyleSheet, TextStyle, TextInputProperties } from 'react-native';
+import { TextTypes, FontWeights } from 'app/types/entity/Texts';
+import theme from 'app/theme/defaultTheme';
 
-interface IProps {
-    type: TextTypes,
-    style?: TextStyle
+interface IProps extends TextInputProperties {
 }
 
 const CustomTextInput: React.FC<IProps> = (props) => {
-
-    let textStyles = [styles.fontStyles];
-
-    // Set font style variants
-    switch (props.type) {
-        case TextTypes.HEADING:
-            textStyles.push(styles.heading);
-            break;
-        case TextTypes.BODY:
-            textStyles.push(styles.body);
-            break;
-        default:
-            break;
-    }
-
-    return <TextInput {...props} style={[...textStyles, props.style]} />
+    return <TextInput {...props} style={[styles.input, props.style]} />
 }
 
 const styles = StyleSheet.create({
-    fontStyles: {
-
-    },
-    heading: {
-        fontSize: 22
-    },
-    body: {
-
+    input: {
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: theme.TEXT_INPUT_PRIMARY_BORDER_COLOR,
+        backgroundColor: theme.TEXT_INPUT_PRIMARY_BACKGROUND_COLOR,
+        paddingVertical: 16,
+        paddingHorizontal: 16,
+        fontFamily: 'Poppins-Regular',
+        color: theme.TEXT_INPUT_PRIMARY_TEXT_COLOR
     }
 })
 

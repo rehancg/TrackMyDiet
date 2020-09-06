@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, memo } from 'react'
-import { Animated, StyleSheet, View, ViewStyle, ActivityIndicator, StatusBar, StatusBarStyle } from 'react-native';
+import { Animated, StyleSheet, View, ViewStyle, ActivityIndicator, StatusBar, StatusBarStyle, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from 'app/theme/defaultTheme';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -12,7 +12,9 @@ interface IProps {
     style?: ViewStyle,
     safeAreaBackgroundColor?: string,
     barStyle?: StatusBarStyle,
-    loaderColor?: string
+    loaderColor?: string,
+    withKeyboardAvoidingView?: boolean,
+    disableScroll?: boolean
 }
 
 interface IAcitivityIndicator {
@@ -34,11 +36,20 @@ const RenderContent: React.FC<IProps> = (props) => {
             <StatusBar barStyle={props.barStyle || theme.BAR_STYLE_DEFAULT} backgroundColor={backgroundColor} />
             {props.withSafeAreaView ? (
                 <SafeAreaView style={[styles.container, { backgroundColor }]} >
-                    {props.children}
+                    {
+                        props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior="padding" keyboardVerticalOffset={40}>
+                            {props.children}
+                        </KeyboardAvoidingView> : props.children
+                    }
+
                 </SafeAreaView>
             ) : (
                     <>
-                        {props.children}
+                        {
+                            props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior="padding" keyboardVerticalOffset={40}>
+                                {props.children}
+                            </KeyboardAvoidingView> : props.children
+                        }
                     </>
                 )
             }
@@ -80,7 +91,7 @@ const ViewWrapper: React.FC<IProps> = (props) => {
                 }]}>
                     {
                         props.isReady ? (
-                            <ScrollView bounces={false} contentContainerStyle={styles.scrollWrapper}>
+                            <ScrollView bounces={false} contentContainerStyle={styles.scrollWrapper} scrollEnabled={!props.disableScroll}>
                                 <View style={[styles.container, props.style]}>
                                     {props.children}
                                 </View>
