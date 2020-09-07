@@ -1,4 +1,4 @@
-package com.trackmydiet;
+package com.zeesolutions.trackmydiet;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

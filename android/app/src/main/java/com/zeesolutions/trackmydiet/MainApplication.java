@@ -1,4 +1,4 @@
-package com.trackmydiet;
+package com.zeesolutions.trackmydiet;
 
 import android.app.Application;
 import android.content.Context;
