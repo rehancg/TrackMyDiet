@@ -21,7 +21,6 @@ export const useSize = (): [
     } | null>(null);
 
     const onLayout = useCallback((event: LayoutChangeEvent) => {
-        console.log("Layout ", event.nativeEvent.layout)
         const { width, height, x, y } = event.nativeEvent.layout;
         setSize({ width, height, x, y });
     }, []);

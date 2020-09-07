@@ -7,7 +7,7 @@ interface IProps {
     isSelected?: boolean,
     onSelect: ((event: GestureResponderEvent) => void) | null | undefined,
     children: React.ReactNode,
-    style: ViewStyle | undefined
+    style: ViewStyle | ViewStyle[] | undefined
 }
 
 const OptionCard: React.FC<IProps> = (props) => {
@@ -51,7 +51,7 @@ const stylesDefault = StyleSheet.create({
             width: 0,
             height: 2,
         },
-        shadowOpacity: 0.23,
+        shadowOpacity: 0.20,
         shadowRadius: 2.62,
         elevation: 4,
     },

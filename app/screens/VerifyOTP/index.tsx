@@ -9,12 +9,13 @@ import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
 import theme from 'app/theme/defaultTheme';
 import { useTranslation } from 'react-i18next';
+import NavigationUtils from 'app/utils/NavigationUtils';
 
 const VerifyOTP: React.FC = () => {
     const { t } = useTranslation('VerifyOTP');
 
     const onClickNext = () => {
-
+        NavigationUtils.resetToScreen('OnBoading')
     }
 
     return (

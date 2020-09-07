@@ -12,6 +12,7 @@ import { DEVICE_HEIGHT, DEVICE_WIDTH, useSize } from 'app/utils/UIHelper'
 import { TextTypes } from 'app/types/entity/Texts';
 import theme from 'app/theme/defaultTheme';
 import ToggleButton from '../ToggleButton';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 const WeightSetter: React.FC = () => {
@@ -44,7 +45,10 @@ const WeightSetter: React.FC = () => {
                 trackStyle={styles.trackStyle}
                 thumbTouchSize={styles.thumbTouchSize}
             />
-
+            <View style={styles.sliderX}>
+                <Text>30{unit}</Text>
+                <Text>300{unit}</Text>
+            </View>
         </View>
     )
 }
@@ -91,6 +95,14 @@ const styles = StyleSheet.create({
     thumbTouchSize: {
         width: 40,
         height: 40
+    },
+    sliderX: {
+        marginTop: -10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    scrollWrapper: {
+        flexGrow: 1
     }
 })
 

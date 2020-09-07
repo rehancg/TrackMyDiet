@@ -55,6 +55,15 @@ export default {
         },
         'weight': {
             'title': 'Select your Weight',
+        },
+        'goal': {
+            'title': 'What\'s your goal?'
+        },
+        'type': {
+            'title': 'What\'s your diet type?'
+        },
+        'activityLevel': {
+            'title': 'How Active are you?'
         }
     },
     Ruler: {
@@ -67,6 +76,33 @@ export default {
     Scale: {
         'index': {
             'title': 'Drag top - down the scale',
+        }
+    },
+    DietMeta: {
+        'goal': {
+            'lossWeight': 'Lose weight',
+            'lossWeightTagLine': 'Burn fat & get lean',
+            'buildMuscles': 'Build Muscles',
+            'buildMusclesTagline': 'Bulkup body and muscles',
+            'getFitter': 'Stay Healthy',
+            'getFitterTagLine': 'Get fitter and stay healthy'
+        },
+        'type': {
+            'standard': 'Standard',
+            'standardTagLine': '',
+            'pescentarian': 'Pescentarian',
+            'pescentarianTagline': 'includes fish and seafood',
+            'vegitarian': 'Vegitarian',
+            'vegitarianTagLine': 'No meat',
+            'vegan': 'Vegan',
+            'veganTagLine': 'No animal products'
+        },
+        'activityLevel': {
+            'sedentary': 'Sedentary',
+            'light-exercise': 'Light-Exercise',
+            'moderate-exercise': 'Medium-Exercise',
+            'heavy-exercise': 'Heavy-Exercise',
+            'athlete': 'Athlete'
         }
     },
     Login: {

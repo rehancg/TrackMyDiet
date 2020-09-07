@@ -31,6 +31,10 @@ function reset(state: NavigationState | PartialState<NavigationState>) {
     navigationRef.current?.reset(state);
 }
 
+function resetToScreen(screen: string) {
+    navigationRef.current?.reset({ index: 0, routes: [{ name: screen }] });
+}
+
 function goBack() {
     navigationRef.current?.goBack();
 }
@@ -40,6 +44,7 @@ export default {
     push,
     pop,
     reset,
+    resetToScreen,
     goBack,
     popToTop
 }

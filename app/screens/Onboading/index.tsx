@@ -16,18 +16,23 @@ import SetAge from './SetAge';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
 import SetHeight from './SetHeight';
 import SetWeight from './SetWeight';
+import SelectGoal from './SelectGoal';
+import SelectDietType from './SelectDietType';
+import SelectActivityLevel from './SelectActivityLevel';
 
-const numOfPages = 5;
+const numOfPages = 8;
 
 const Onboading: React.FC = (props) => {
     const viewPagerRef = createRef<ViewPager>();
     const { t } = useTranslation('Onboading');
     const [gender, setGender] = useState(Gender.MALE);
     const [age, setAge] = useState(21);
+    const [goal, setGoal] = useState(2);
+    const [type, setType] = useState(2);
+    const [activityLevel, setActivityLevel] = useState(2);
     const [page, setPage] = useState(0);
 
     const navigateNext = () => {
-
         viewPagerRef.current?.setPage(page + 1)
     }
 
@@ -47,30 +52,44 @@ const Onboading: React.FC = (props) => {
             <Text style={styles.progressText} type={TextTypes.PARAGRAPH}>{`${t('index.progressPrefix')} ${page + 1}/${numOfPages}`}</Text>
             <ViewPager ref={viewPagerRef} style={styles.viewPager} initialPage={0} scrollEnabled={false} onPageSelected={(e) => setPage(e.nativeEvent.position)}>
                 <View>
-                    <YourName key={'name'} />
+                    <YourName key={'onbording-name'} />
                 </View>
 
                 <View>
-                    <SelectGender key={'gender'} selectedGender={gender} onSelect={(id) => setGender(id)} />
+                    <SelectGender key={'onbording-gender'} selectedGender={gender} onSelect={(id) => setGender(id)} />
                 </View>
 
                 <View>
-                    <SetAge key={'age'} age={age} onChangeAge={age => setAge(age)} />
+                    <SetAge key={'onbording-age'} age={age} onChangeAge={age => setAge(age)} />
                 </View>
 
                 <View>
-                    <SetHeight key={'height'} />
+                    <SetHeight key={'onbording-height'} />
                 </View>
 
                 <View>
-                    <SetWeight key={'weight'} />
+                    <SetWeight key={'onbording-weight'} />
+                </View>
+
+                <View>
+                    <SelectGoal key={'onbording-goal'} onSelect={setGoal} goal={goal} />
+                </View>
+
+                <View>
+                    <SelectDietType key={'onbording-type'} onSelect={setType} value={type} />
+                </View>
+
+                <View>
+                    <SelectActivityLevel key={'onbording-activity-level'} onSelect={setActivityLevel} value={activityLevel} />
                 </View>
             </ViewPager>
 
             {/* Action buttons container */}
             <View style={styles.actionButtons}>
                 <Button type={ButtonTypes.PRIMARY} title={t('index.next')} onPress={navigateNext} flex style={styles.actionButton} />
-                <Button type={ButtonTypes.ACTION} title={t('index.previous')} onPress={navigateBack} flex style={styles.actionButton} />
+                {
+                    page > 0 ? <Button type={ButtonTypes.ACTION} title={t('index.previous')} onPress={navigateBack} flex style={styles.actionButton} /> : <View style={styles.buttonSpacer} />
+                }
             </View>
 
         </ViewWrapper>
@@ -99,6 +118,10 @@ const styles = StyleSheet.create({
     },
     actionButton: {
         marginVertical: 8
+    },
+    buttonSpacer: {
+        marginVertical: 8,
+        height: 48
     }
 })
 
