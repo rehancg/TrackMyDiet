@@ -16,7 +16,7 @@ const SelectDietType: React.FC<IProps> = (props) => {
     const { t } = useTranslation('Onboading')
 
     return (
-        <ScrollView style={styles.wrapper}>
+        <ScrollView style={styles.wrapper} showsVerticalScrollIndicator={false}>
             <View style={styles.container}>
                 <Text type={TextTypes.TITLE} style={styles.title}>{t('type.title')}</Text>
 

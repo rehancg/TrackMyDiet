@@ -89,9 +89,9 @@ export default {
         },
         'type': {
             'standard': 'Standard',
-            'standardTagLine': '',
+            'standardTagLine': 'Anything healthy',
             'pescentarian': 'Pescentarian',
-            'pescentarianTagline': 'includes fish and seafood',
+            'pescentarianTagline': 'Includes fish and seafood',
             'vegitarian': 'Vegitarian',
             'vegitarianTagLine': 'No meat',
             'vegan': 'Vegan',

@@ -33,6 +33,6 @@ export const ActivityLevels = [
         key: 'string',
         titleKey: 'activityLevel.athlete',
         tagLineKey: '',
-        image: require('app/assets/images/athlete-girl.png')
+        image: require('app/assets/images/athlete.png')
     }
 ]

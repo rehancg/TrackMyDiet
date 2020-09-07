@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     },
     rulerIndicatorText: {
         color: theme.TEXT_COLOR_SECONDARY,
-        fontSize: 8
+        fontSize: 8,
     },
     markerLine: {
         position: 'absolute',
@@ -169,9 +169,10 @@ const styles = StyleSheet.create({
         marginTop: (DEVICE_HEIGHT * 0.4) + 100,
         paddingVertical: 0,
         paddingHorizontal: 16,
-        fontSize: 12,
+        fontSize: 14,
         alignSelf: 'center',
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        fontFamily: 'Poppins-SemiBold'
     }
 })
 

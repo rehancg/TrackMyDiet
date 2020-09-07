@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     viewPager: {
         // flex: 1,
         width: DEVICE_WIDTH,
-        height: DEVICE_HEIGHT * 0.71,
+        height: DEVICE_HEIGHT * 0.73,
     },
     actionButtons: {
         marginTop: 'auto',
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
     buttonSpacer: {
         marginVertical: 8,
-        height: 48
+        height: 32
     }
 })
 

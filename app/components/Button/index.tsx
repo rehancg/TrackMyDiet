@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     },
     // Action button styles
     actionButtonContainer: {
+        height: 32,
         backgroundColor: theme.BUTTON_ACTION_BACKGROUND,
         borderWidth: 0,
     },
