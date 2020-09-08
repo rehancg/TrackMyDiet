@@ -1,6 +1,6 @@
 
 export interface ILanguage {
-    id: number,
+    id: string,
     title: string,
     shortCode: string
 }

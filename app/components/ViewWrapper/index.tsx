@@ -37,7 +37,7 @@ const RenderContent: React.FC<IProps> = (props) => {
             {props.withSafeAreaView ? (
                 <SafeAreaView style={[styles.container, { backgroundColor }]} >
                     {
-                        props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior="padding" keyboardVerticalOffset={40}>
+                        props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior={Platform.OS == 'ios' ? "padding" : undefined}>
                             {props.children}
                         </KeyboardAvoidingView> : props.children
                     }
@@ -46,7 +46,7 @@ const RenderContent: React.FC<IProps> = (props) => {
             ) : (
                     <>
                         {
-                            props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior="padding" keyboardVerticalOffset={40}>
+                            props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior={Platform.OS == 'ios' ? "padding" : undefined}>
                                 {props.children}
                             </KeyboardAvoidingView> : props.children
                         }

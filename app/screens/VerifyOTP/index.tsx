@@ -1,18 +1,20 @@
 import React from 'react';
 import { StyleSheet, Image, View } from 'react-native';
+import OTPInputView from '@twotalltotems/react-native-otp-input'
 
 import ViewWrapper from 'app/components/ViewWrapper';
 import Text from 'app/components/Text';
 import TextInput from 'app/components/TextInput';
 import Button from 'app/components/Button';
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
-import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
+import { DEVICE_HEIGHT, DEVICE_WIDTH, useSize } from 'app/utils/UIHelper';
 import theme from 'app/theme/defaultTheme';
 import { useTranslation } from 'react-i18next';
 import NavigationUtils from 'app/utils/NavigationUtils';
 
 const VerifyOTP: React.FC = () => {
     const { t } = useTranslation('VerifyOTP');
+    const [size, onLayout] = useSize();
 
     const onClickNext = () => {
         NavigationUtils.resetToScreen('OnBoading')
@@ -26,11 +28,17 @@ const VerifyOTP: React.FC = () => {
                 <Text type={TextTypes.BODY} weight={FontWeights.BOLD}>{` 0712671822`}</Text>
             </Text>
 
-            <View style={styles.otpContainer}>
+            <View style={styles.otpContainer} onLayout={onLayout}>
+                <OTPInputView
+                    pinCount={4}
+                    autoFocusOnLoad
+                    style={{ width: size?.width || 0, height: 50 }}
+                    codeInputFieldStyle={styles.otpInput}
+                />
+                {/* <TextInput maxLength={1} style={styles.otpInput} />
                 <TextInput maxLength={1} style={styles.otpInput} />
                 <TextInput maxLength={1} style={styles.otpInput} />
-                <TextInput maxLength={1} style={styles.otpInput} />
-                <TextInput maxLength={1} style={styles.otpInput} />
+                <TextInput maxLength={1} style={styles.otpInput} /> */}
             </View>
 
             <Text type={TextTypes.BODY} style={styles.otpResend}>{t('index.dontRecieve')}
@@ -68,7 +76,12 @@ const styles = StyleSheet.create({
     otpInput: {
         flex: 1,
         textAlign: 'center',
-        marginHorizontal: 8
+        color: theme.TEXT_INPUT_PRIMARY_TEXT_COLOR,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: theme.TEXT_INPUT_PRIMARY_BORDER_COLOR,
+        backgroundColor: theme.TEXT_INPUT_PRIMARY_BACKGROUND_COLOR,
+        fontFamily: 'Poppins-Regular',
+        fontSize: 16,
     },
     otpResend: {
         textAlign: 'center',

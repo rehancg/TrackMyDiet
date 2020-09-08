@@ -9,7 +9,7 @@ export default {
     LanguageSelect: {
         'index': {
             'title_1': 'What\'s your\npreferred',
-            'title_2': 'language',
+            'title_2': 'language?',
             'continue': 'Continue',
         }
     },

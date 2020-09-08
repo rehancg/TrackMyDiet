@@ -1,11 +1,11 @@
 export const Languages = [
     {
-        id: 1,
+        id: 'en',
         title: 'English',
         shortCode: 'En'
     },
     {
-        id: 2,
+        id: 'si',
         title: 'Sinhala',
         shortCode: 'සිං'
     }

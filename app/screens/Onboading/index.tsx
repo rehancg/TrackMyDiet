@@ -51,36 +51,36 @@ const Onboading: React.FC = (props) => {
             <ProgressBar progress={calculateProgress()} style={styles.progressBar} />
             <Text style={styles.progressText} type={TextTypes.PARAGRAPH}>{`${t('index.progressPrefix')} ${page + 1}/${numOfPages}`}</Text>
             <ViewPager ref={viewPagerRef} style={styles.viewPager} initialPage={0} scrollEnabled={false} onPageSelected={(e) => setPage(e.nativeEvent.position)}>
-                <View>
-                    <YourName key={'onbording-name'} />
+                <View key={'onbording-name'}>
+                    <YourName />
                 </View>
 
-                <View>
-                    <SelectGender key={'onbording-gender'} selectedGender={gender} onSelect={(id) => setGender(id)} />
+                <View key={'onbording-gender'}>
+                    <SelectGender selectedGender={gender} onSelect={(id) => setGender(id)} />
                 </View>
 
-                <View>
-                    <SetAge key={'onbording-age'} age={age} onChangeAge={age => setAge(age)} />
+                <View key={'onbording-age'}>
+                    <SetAge age={age} onChangeAge={age => setAge(age)} />
                 </View>
 
-                <View>
-                    <SetHeight key={'onbording-height'} />
+                <View key={'onbording-height'}>
+                    <SetHeight />
                 </View>
 
-                <View>
-                    <SetWeight key={'onbording-weight'} />
+                <View key={'onbording-weight'}>
+                    <SetWeight />
                 </View>
 
-                <View>
-                    <SelectGoal key={'onbording-goal'} onSelect={setGoal} goal={goal} />
+                <View key={'onbording-goal'}>
+                    <SelectGoal onSelect={setGoal} goal={goal} />
                 </View>
 
-                <View>
-                    <SelectDietType key={'onbording-type'} onSelect={setType} value={type} />
+                <View key={'onbording-type'}>
+                    <SelectDietType onSelect={setType} value={type} />
                 </View>
 
-                <View>
-                    <SelectActivityLevel key={'onbording-activity-level'} onSelect={setActivityLevel} value={activityLevel} />
+                <View key={'onbording-activity-level'}>
+                    <SelectActivityLevel onSelect={setActivityLevel} value={activityLevel} />
                 </View>
             </ViewPager>
 

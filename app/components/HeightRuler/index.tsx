@@ -70,10 +70,11 @@ const HeightRuler: React.FC = () => {
                 ]} source={require('app/assets/images/man_on_ruler.png')} />
 
                 <Image source={require('app/assets/images/ruler.png')} style={styles.rulerImg} resizeMode="contain" />
-                <View style={styles.rulerList}>
+                <View style={[styles.rulerList, { width: size?.width || 0 }]}>
                     <FlatList
                         ref={flatListRef}
                         showsVerticalScrollIndicator={false}
+                        style={styles.rulerScrollableArea}
                         data={data}
                         renderItem={({ item, index }) => <RulerValue item={item} />}
                         keyExtractor={(index) => `ruler-${index}`}
@@ -91,7 +92,7 @@ const HeightRuler: React.FC = () => {
                         )}
                         contentContainerStyle={{ height: data.length * ITEM_HEIGHT }}
                     />
-                    <View style={styles.rulerIndicator}>
+                    <View pointerEvents='none' style={styles.rulerIndicator}>
                         <Text style={styles.rulerIndicatorText}>{height}</Text>
                     </View>
                 </View>
@@ -122,19 +123,23 @@ const styles = StyleSheet.create({
         position: 'absolute',
         paddingTop: 16,
         paddingBottom: 2,
-        right: 0,
-        width: 44,
         height: DEVICE_HEIGHT * 0.4,
+    },
+    rulerScrollableArea: {
+        marginTop: -10,
+        paddingTop: 10,
     },
     rulerText: {
         fontSize: 8,
-        color: theme.PROGRESS_BAR_DEFUALT,
-        height: ITEM_HEIGHT
+        color: theme.TEXT_COLOR_PRIMARY,
+        height: ITEM_HEIGHT,
+        marginLeft: 'auto',
+        marginRight: 27
     },
     rulerIndicator: {
-        width: 24,
-        height: 24,
-        borderRadius: 24,
+        width: 30,
+        height: 30,
+        borderRadius: 30 / 2,
         backgroundColor: theme.BACKGROUND_PRIMARY,
         shadowColor: "#000",
         shadowOffset: {
@@ -144,15 +149,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-        top: 5,
         position: 'absolute',
-        left: -5,
+        right: 20,
         alignItems: 'center',
         justifyContent: 'center',
     },
     rulerIndicatorText: {
         color: theme.TEXT_COLOR_SECONDARY,
-        fontSize: 8,
+        fontSize: 10,
     },
     markerLine: {
         position: 'absolute',

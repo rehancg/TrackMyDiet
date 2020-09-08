@@ -1,9 +1,9 @@
-import React from 'react';
-import { StyleSheet, Image, KeyboardAvoidingView, Platform, View } from 'react-native';
+import React, { createRef } from 'react';
+import { StyleSheet, Image, TextInput, Platform, View } from 'react-native';
 
 import ViewWrapper from 'app/components/ViewWrapper';
 import Text from 'app/components/Text';
-import TextInput from 'app/components/TextInput';
+import MaskedTextInput from 'app/components/MaskedTextInput';
 import Button from 'app/components/Button';
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
@@ -13,6 +13,7 @@ import NavigationUtils from 'app/utils/NavigationUtils';
 
 const RequestOTP: React.FC = () => {
     const { t } = useTranslation('RequestOTP');
+    const mobileNumMaskRef = createRef<TextInput>();
 
     const onClickNext = () => {
         NavigationUtils.navigate('VerifyOTPScreen')
@@ -26,7 +27,26 @@ const RequestOTP: React.FC = () => {
                 <Text type={TextTypes.BODY} weight={FontWeights.BOLD}> {t('index.desc_2')}</Text>
                 <Text type={TextTypes.BODY}> {t('index.desc_3')}</Text>
             </Text>
-            <TextInput placeholder="Mobile Number" style={styles.mobileNumberContainer} />
+
+            {/* <TextInputMask
+                refInput={mobileNumMaskRef}
+                onChangeText={(formatted, extracted) => {
+                    console.log(formatted) // +1 (123) 456-78-90
+                    console.log(extracted) // 1234567890
+                }}
+                placeholder="123123213"
+                mask={"([000]) [000] [00] [00]"}
+                style={styles.mobileNumberContainer}
+                keyboardType="phone-pad"
+            /> */}
+            <MaskedTextInput
+                onChangeMaskedText={(formatted, extracted) => {
+                    console.log(formatted) // +1 (123) 456-78-90
+                    console.log(extracted) // 1234567890
+                }}
+                refInput={mobileNumMaskRef}
+                mask="(0[00]) [000] [00] [00]"
+                placeholder="Mobile Number" style={styles.mobileNumberContainer} keyboardType="phone-pad" />
 
             {/* Continue button */}
             <Button title={t('index.continue')} onPress={onClickNext} flex style={styles.footerButton} />

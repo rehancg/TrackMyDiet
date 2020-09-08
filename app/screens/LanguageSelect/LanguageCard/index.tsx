@@ -9,7 +9,7 @@ import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 interface ILanguageCardProps {
     isSelected?: boolean,
     data: ILanguage,
-    onSelect: (lang: number) => void,
+    onSelect: (lang: string) => void,
     style?: ViewStyle
 }
 

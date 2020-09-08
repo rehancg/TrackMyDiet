@@ -11,27 +11,41 @@ import LanguageCard from './LanguageCard';
 import { Languages } from 'app/constants/languages';
 import { useTranslation } from 'react-i18next';
 import NavigationUtils from 'app/utils/NavigationUtils';
+import { useDispatch } from 'react-redux';
+import thunks from 'app/thunks';
 
 
 
 const LanguageSelect: React.FC = () => {
-    const [selectedLang, setSelectedLang] = useState(1); // Default lang en -> id = 1
+    const [selectedLang, setSelectedLang] = useState('en'); // Default lang en -> id = 1
     const { t } = useTranslation('LanguageSelect');
+    const dispatch = useDispatch();
 
     const onClickNext = () => {
         NavigationUtils.navigate('RequestOTPScreen');
     }
 
+    const onLanguageSelect = (lang: string) => {
+        setSelectedLang(lang)
+        dispatch(thunks.changeLanguage(lang))
+    }
+
     return (
         <ViewWrapper isReady={true} withAnimation withSafeAreaView>
             <Text type={TextTypes.TITLE} style={styles.title}>{t('index.title_1')}
-                <Text type={TextTypes.TITLE} weight={FontWeights.BOLD}>{` ${t('index.title_2')}?`}</Text>
+                <Text type={TextTypes.TITLE} weight={FontWeights.BOLD}>{` ${t('index.title_2')}`}</Text>
             </Text>
 
             <View style={styles.languagesContainer}>
                 {
                     Languages.map(lang => (
-                        <LanguageCard key={lang.shortCode} isSelected={selectedLang === lang.id} style={styles.languageCard} onSelect={(lang) => setSelectedLang(lang)} data={lang} />
+                        <LanguageCard
+                            key={lang.id}
+                            isSelected={selectedLang === lang.id}
+                            style={styles.languageCard}
+                            onSelect={onLanguageSelect}
+                            data={lang}
+                        />
                     ))
                 }
             </View>
