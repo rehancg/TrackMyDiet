@@ -19,6 +19,7 @@ import SetWeight from './SetWeight';
 import SelectGoal from './SelectGoal';
 import SelectDietType from './SelectDietType';
 import SelectActivityLevel from './SelectActivityLevel';
+import NavigationUtils from 'app/utils/NavigationUtils';
 
 const numOfPages = 8;
 
@@ -33,7 +34,10 @@ const Onboading: React.FC = (props) => {
     const [page, setPage] = useState(0);
 
     const navigateNext = () => {
-        viewPagerRef.current?.setPage(page + 1)
+        if (page == (numOfPages - 1)) {
+            NavigationUtils.resetToScreen('Home');
+        } else
+            viewPagerRef.current?.setPage(page + 1)
     }
 
     const navigateBack = () => {

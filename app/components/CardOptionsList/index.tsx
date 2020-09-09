@@ -19,8 +19,8 @@ const CardOptionsList: React.FC<IProps> = (props) => {
         <>
             {
                 props.data.map((data) => (
-                    data.image ? <DataRowWithThumb style={[styles.card, props.cardStyle || {}]} id={data.id} title={t(data.titleKey)} onSelect={props.onSelectCard} value={props.value} image={data.image} /> :
-                        <DataRow style={[styles.card, props.cardStyle || {}]} id={data.id} title={t(data.titleKey)} onSelect={props.onSelectCard} value={props.value} tagLine={t(data.tagLineKey)} />
+                    data.image ? <DataRowWithThumb key={data.id} style={[styles.card, props.cardStyle || {}]} id={data.id} title={t(data.titleKey)} onSelect={props.onSelectCard} value={props.value} image={data.image} /> :
+                        <DataRow key={data.id} style={[styles.card, props.cardStyle || {}]} id={data.id} title={t(data.titleKey)} onSelect={props.onSelectCard} value={props.value} tagLine={t(data.tagLineKey)} />
                 ))
             }
         </>

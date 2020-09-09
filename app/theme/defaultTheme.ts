@@ -1,12 +1,14 @@
 import { StatusBarStyle } from "react-native";
 
 const ColorPallet = {
-    WHITE: '#fff',
-    BLACK: '#000',
+    WHITE: '#ffffff',
+    BLACK: '#000000',
     GREY: '#676767',
     LIGHT_GREY: '#D6D6D6',
     DARK_GREY: '#707070',
     GREEN: '#32c359',
+    DARK_BLUE: "#205072",
+    LIGHT_BLUE: "#329D9C"
 }
 
 const theme = {
@@ -14,6 +16,7 @@ const theme = {
     TEXT_COLOR_PRIMARY: ColorPallet.GREY,
     TEXT_COLOR_SECONDARY: ColorPallet.WHITE,
     TEXT_COLOR_TERTIARY: ColorPallet.GREEN,
+    TEXT_COLOR_DEFAULT: ColorPallet.DARK_BLUE,
 
     // Text input colors
     TEXT_INPUT_PRIMARY_BACKGROUND_COLOR: `${ColorPallet.LIGHT_GREY}40`,
@@ -61,7 +64,15 @@ const theme = {
 
     // Slider
     SLIDER_BACKGROUND: ColorPallet.LIGHT_GREY,
-    SLIDER_THUMB: ColorPallet.GREEN
+    SLIDER_THUMB: ColorPallet.GREEN,
+
+    // Tab bar
+    TAB_BAR_ACTIVE_ICON_COLOR: ColorPallet.GREEN,
+    TAB_BAR_INACTIVE_ICON_COLOR: ColorPallet.GREY,
+
+    // Home page
+    BMI_CARD_BACKGROUND: `${ColorPallet.DARK_BLUE}BF`,
+    CALORY_CARD_BACKGROUND: ColorPallet.LIGHT_BLUE
 }
 
 export default theme;

@@ -3,6 +3,8 @@ import { Animated, StyleSheet, View, ViewStyle, ActivityIndicator, StatusBar, St
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from 'app/theme/defaultTheme';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useSafeArea } from 'react-native-safe-area-context';
+
 
 interface IProps {
     isReady: boolean,
@@ -14,7 +16,9 @@ interface IProps {
     barStyle?: StatusBarStyle,
     loaderColor?: string,
     withKeyboardAvoidingView?: boolean,
-    disableScroll?: boolean
+    disableScroll?: boolean,
+    withInsets?: boolean,
+    withoutScrollView?: boolean
 }
 
 interface IAcitivityIndicator {
@@ -31,17 +35,18 @@ const CustomActivityIndicator: React.FC<IAcitivityIndicator> = (props) => {
 
 const RenderContent: React.FC<IProps> = (props) => {
     const backgroundColor = props.safeAreaBackgroundColor || theme.BACKGROUND_SECONDARY;
+    const insets = useSafeArea();
+
     return (
         <>
             <StatusBar barStyle={props.barStyle || theme.BAR_STYLE_DEFAULT} backgroundColor={backgroundColor} />
             {props.withSafeAreaView ? (
-                <SafeAreaView style={[styles.container, { backgroundColor }]} >
+                <SafeAreaView style={[styles.container, { backgroundColor, paddingBottom: props.withInsets ? -insets.bottom : 0 }]}  >
                     {
                         props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior={Platform.OS == 'ios' ? "padding" : undefined}>
                             {props.children}
                         </KeyboardAvoidingView> : props.children
                     }
-
                 </SafeAreaView>
             ) : (
                     <>
@@ -90,13 +95,19 @@ const ViewWrapper: React.FC<IProps> = (props) => {
                     ]
                 }]}>
                     {
-                        props.isReady ? (
-                            <ScrollView bounces={false} contentContainerStyle={styles.scrollWrapper} scrollEnabled={!props.disableScroll}>
+                        props.isReady ? props.withoutScrollView ?
+                            (
                                 <View style={[styles.container, props.style]}>
                                     {props.children}
                                 </View>
-                            </ScrollView>
-                        ) : <CustomActivityIndicator color={props.loaderColor} />
+                            )
+                            : (
+                                <ScrollView bounces={false} contentContainerStyle={styles.scrollWrapper} scrollEnabled={!props.disableScroll}>
+                                    <View style={[styles.container, props.style]}>
+                                        {props.children}
+                                    </View>
+                                </ScrollView>
+                            ) : <CustomActivityIndicator color={props.loaderColor} />
                     }
 
                 </Animated.View>
@@ -108,7 +119,7 @@ const ViewWrapper: React.FC<IProps> = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.BACKGROUND_SECONDARY
+        backgroundColor: theme.BACKGROUND_SECONDARY,
     },
     scrollWrapper: {
         flexGrow: 1

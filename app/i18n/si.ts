@@ -109,5 +109,14 @@ export default {
         'index': {
             'welcome': 'Hello there'
         }
+    },
+    Home: {
+        'index': {
+            'gm': 'Good Morning',
+            'bmi': 'BMI',
+            'dailyCaloryCount': 'Daily Calories Requirement',
+            'recommended': 'Recommened',
+            'createYourOwnPlan': 'Create your own meal plan'
+        }
     }
 }
