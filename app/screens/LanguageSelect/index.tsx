@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
     title: {
         marginTop: DEVICE_HEIGHT / 8,
         color: theme.TEXT_COLOR_PRIMARY,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginHorizontal: 32,
     },
     languagesContainer: {
         marginTop: 32,
