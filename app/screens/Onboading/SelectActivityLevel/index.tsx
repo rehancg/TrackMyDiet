@@ -16,7 +16,7 @@ const SelectActivityLevel: React.FC<IProps> = (props) => {
     const { t } = useTranslation('Onboading')
 
     return (
-        <ScrollView style={styles.wrapper} showsVerticalScrollIndicator={false}>
+        <ScrollView style={styles.wrapper} showsVerticalScrollIndicator={false} contentContainerStyle={styles.listContainer}>
             <View style={styles.container}>
                 <Text type={TextTypes.TITLE} style={styles.title}>{t('activityLevel.title')}</Text>
 
@@ -30,6 +30,9 @@ const SelectActivityLevel: React.FC<IProps> = (props) => {
 
 const styles = StyleSheet.create({
     wrapper: {
+    },
+    listContainer: {
+        paddingBottom: 50
     },
     container: {
         flex: 1,

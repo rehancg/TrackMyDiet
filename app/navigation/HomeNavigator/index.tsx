@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from 'app/screens/Home';
 import theme from 'app/theme/defaultTheme';
 import Icon from 'app/components/Icon'
+import CustomMealPlan from 'app/screens/CustomMealPlan';
 
 const TabBarIcon: React.FC<{
     focused: boolean;
@@ -35,8 +36,8 @@ const HomeNavigator: React.FC = () => {
                 }}
             />
             <HomeNavigatorTabs.Screen
-                name='HomeScreen2'
-                component={Home}
+                name='CustomMealPlanScreen'
+                component={CustomMealPlan}
                 options={{
                     tabBarIcon: (props) => <TabBarIcon {...props} name="calendar-alt" />
                 }}

@@ -16,9 +16,9 @@ export default {
     RequestOTP: {
         'index': {
             'title': 'ඔබගේ දුරකතන අංකය ඇතුලත් කරන්න',
-            'desc_1': 'අපි මේ නම්බර් එකට',
-            'desc_2': 'පාස්කෝඩ් එකක්\n',
-            'desc_3': 'එවනවා තහවුරු කරගන්න',
+            'desc_1': 'අංකය තහවුරු කරගැනීමට',
+            'desc_2': 'කේතයක් ඔබවෙත\n',
+            'desc_3': 'එවනු ලැබේ',
             'mobileNum': 'Mobile Number',
             'continue': 'කේතය එවන්න'
         }
@@ -112,7 +112,7 @@ export default {
     },
     Home: {
         'index': {
-            'gm': 'Good Morning',
+            'gm': 'සුබ උදෑසනක්',
             'bmi': 'BMI',
             'dailyCaloryCount': 'Daily Calories Requirement',
             'recommended': 'Recommened',

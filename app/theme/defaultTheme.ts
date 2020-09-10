@@ -27,6 +27,7 @@ const theme = {
     // Background colors
     BACKGROUND_PRIMARY: ColorPallet.GREEN,
     BACKGROUND_SECONDARY: ColorPallet.WHITE,
+    BACKGROUND_TERTIARY: ColorPallet.LIGHT_GREY,
 
     // Button styles
     BUTTON_PRIMARY_BACKGROUND: ColorPallet.GREEN,
@@ -72,7 +73,11 @@ const theme = {
 
     // Home page
     BMI_CARD_BACKGROUND: `${ColorPallet.DARK_BLUE}BF`,
-    CALORY_CARD_BACKGROUND: ColorPallet.LIGHT_BLUE
+    CALORY_CARD_BACKGROUND: ColorPallet.LIGHT_BLUE,
+
+    MEAL_PLAN_TYPE_BADGE: {
+        FREE_BACKGROUND: ColorPallet.GREEN
+    }
 }
 
 export default theme;
