@@ -30,7 +30,7 @@ const Home: React.FC = () => {
     const dispatch = useDispatch();
 
     return (
-        <ViewWrapper withoutScrollView isReady={true} withInsets withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
+        <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
             <FlatList
                 bounces={false}
                 showsVerticalScrollIndicator={false}

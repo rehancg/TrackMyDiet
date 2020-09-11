@@ -1,4 +1,7 @@
 export default {
+    App: {
+        "search": 'Search'
+    },
     Welcome: {
         'index': {
             'title': 'The only Sri Lankan\nDieting App',
@@ -117,6 +120,11 @@ export default {
             'dailyCaloryCount': 'Daily Calories Requirement',
             'recommended': 'Recommened',
             'createYourOwnPlan': 'Create your own meal plan'
+        }
+    },
+    AddNewFood: {
+        'index': {
+            'title': 'Add Food'
         }
     }
 }

@@ -1,4 +1,7 @@
+import theme from 'app/theme/defaultTheme';
 import { material } from 'react-native-typography'
+
+import Icon from 'app/components/Icon';
 
 const NavigationOptions = {
     stackNavigator: {
@@ -13,7 +16,9 @@ const NavigationOptions = {
             },
             headerTitleStyle: {
                 ...material.titleObject,
-            }
+                color: theme.TEXT_COLOR_DEFAULT
+            },
+            headerBackTitle: ''
         },
         secondary: {
             headerStyle: {

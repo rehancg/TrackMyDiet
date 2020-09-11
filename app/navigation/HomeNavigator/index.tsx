@@ -1,62 +1,35 @@
 import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from 'app/screens/Home';
+import { NavigationOptions } from '../helpers'
+import HomeTabNavigator from '../HomeTabNavigator';
+import AddFoodsToMeal from 'app/screens/AddFoodsToMeal';
+import Icon from 'app/components/Icon';
 import theme from 'app/theme/defaultTheme';
-import Icon from 'app/components/Icon'
-import CustomMealPlan from 'app/screens/CustomMealPlan';
 
-const TabBarIcon: React.FC<{
-    focused: boolean;
-    color: string;
-    size: number;
-    name: string,
-}> = (props) => {
-    return (
-        <Icon size={props.size} color={props.color} name={props.name} />
-    )
-}
-
-const HomeNavigatorTabs = createBottomTabNavigator();
+const HomeNavigatorStack = createStackNavigator();
 const HomeNavigator: React.FC = () => {
     return (
-        <HomeNavigatorTabs.Navigator
-            initialRouteName='HomeScreen'
-            tabBarOptions={{
-                activeTintColor: theme.TAB_BAR_ACTIVE_ICON_COLOR,
-                inactiveTintColor: theme.TAB_BAR_INACTIVE_ICON_COLOR,
-                showLabel: false,
+        <HomeNavigatorStack.Navigator
+            initialRouteName='HomeTabNavigator'
+            screenOptions={{
+                ...NavigationOptions.stackNavigator.default,
+                headerBackTitleVisible: false,
+                headerBackImage: () => <Icon size={16} color={theme.TEXT_COLOR_DEFAULT} name="arrow-back" style={{ paddingHorizontal: 16 }} />
             }}
         >
-            <HomeNavigatorTabs.Screen
-                name='HomeScreen'
-                component={Home}
+            <HomeNavigatorStack.Screen
+                name='HomeTabNavigator'
                 options={{
-                    tabBarIcon: (props) => <TabBarIcon {...props} name="home" />
+                    headerShown: false,
                 }}
+                component={HomeTabNavigator}
             />
-            <HomeNavigatorTabs.Screen
-                name='CustomMealPlanScreen'
-                component={CustomMealPlan}
-                options={{
-                    tabBarIcon: (props) => <TabBarIcon {...props} name="calendar-alt" />
-                }}
+            <HomeNavigatorStack.Screen
+                name='AddNewFoodScreen'
+                component={AddFoodsToMeal}
             />
-            <HomeNavigatorTabs.Screen
-                name='HomeScreen3'
-                component={Home}
-                options={{
-                    tabBarIcon: (props) => <TabBarIcon {...props} name="dashboard" />
-                }}
-            />
-            <HomeNavigatorTabs.Screen
-                name='HomeScreen4'
-                component={Home}
-                options={{
-                    tabBarIcon: (props) => <TabBarIcon {...props} name="user" />
-                }}
-            />
-        </HomeNavigatorTabs.Navigator>
+        </HomeNavigatorStack.Navigator>
     )
 }
 

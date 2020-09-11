@@ -18,6 +18,8 @@ interface IProps {
     withKeyboardAvoidingView?: boolean,
     disableScroll?: boolean,
     withInsets?: boolean,
+    withInsetsTop?: boolean,
+    withInsetsBottom?: boolean,
     withoutScrollView?: boolean
 }
 
@@ -41,7 +43,7 @@ const RenderContent: React.FC<IProps> = (props) => {
         <>
             <StatusBar barStyle={props.barStyle || theme.BAR_STYLE_DEFAULT} backgroundColor={backgroundColor} />
             {props.withSafeAreaView ? (
-                <SafeAreaView style={[styles.container, { backgroundColor, paddingBottom: props.withInsets ? -insets.bottom : 0 }]}  >
+                <SafeAreaView style={[styles.container, { backgroundColor, paddingBottom: (props.withInsetsBottom || props.withInsets) ? -insets.bottom : 0, paddingTop: (props.withInsetsTop || props.withInsets) ? -insets.top : 0 }]}  >
                     {
                         props.withKeyboardAvoidingView && Platform.OS == 'ios' ? <KeyboardAvoidingView style={styles.container} behavior={Platform.OS == 'ios' ? "padding" : undefined}>
                             {props.children}

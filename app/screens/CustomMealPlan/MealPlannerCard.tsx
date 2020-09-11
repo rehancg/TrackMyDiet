@@ -7,6 +7,7 @@ import Button from 'app/components/Button';
 import theme from 'app/theme/defaultTheme';
 import { FontWeights, TextTypes } from 'app/types/entity/Texts';
 import { ButtonTypes } from 'app/types/entity/Button';
+import NavigationUtils from 'app/utils/NavigationUtils';
 
 interface IProps {
     title: string,
@@ -17,6 +18,11 @@ interface IProps {
 }
 
 const MealPlannerCard: React.FC<IProps> = (props) => {
+
+    const onClickAddNew = () => {
+        NavigationUtils.navigate('AddNewFoodScreen')
+    }
+
     return (
         <View style={styles.container}>
 
@@ -47,7 +53,7 @@ const MealPlannerCard: React.FC<IProps> = (props) => {
             {/* Add new buttons */}
             {
                 !props.hideAddNew ? (
-                    <Button title="Add New" type={ButtonTypes.PRIMARY} onPress={() => { }} flex style={styles.addNewButton} />
+                    <Button title="Add New" type={ButtonTypes.PRIMARY} onPress={onClickAddNew} flex style={styles.addNewButton} />
                 ) : null
             }
         </View>
