@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     },
     foodListContainer: {
         paddingTop: 8,
-        paddingHorizontal: 16
+        paddingHorizontal: 16,
+        paddingBottom: 40
     },
     itemSeparator: {
         height: 16

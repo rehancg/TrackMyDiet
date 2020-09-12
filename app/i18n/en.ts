@@ -126,5 +126,13 @@ export default {
         'index': {
             'title': 'Add Food'
         }
+    },
+    FoodDetails: {
+        'index': {
+            'title': 'Food Details',
+            'servingSize': 'Serving Size',
+            'numberOfServings': 'Number of Servings',
+            'preferredTime': 'Prefferred time of the day'
+        }
     }
 }

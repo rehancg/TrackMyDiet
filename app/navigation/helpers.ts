@@ -16,7 +16,8 @@ const NavigationOptions = {
             },
             headerTitleStyle: {
                 ...material.titleObject,
-                color: theme.TEXT_COLOR_DEFAULT
+                color: theme.TEXT_COLOR_DEFAULT,
+                fontFamily: 'Poppins-SemiBold'
             },
             headerBackTitle: ''
         },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ViewStyle, Image } from 'react-native';
+import { View, StyleSheet, ViewStyle, Image, TouchableOpacity } from 'react-native';
 
 import { IFood } from 'app/types/entity/Food';
 import Text from 'app/components/Text';
@@ -34,13 +34,13 @@ const MealPlannerCard: React.FC<IProps> = (props) => {
             </View>
 
             {/* Food list */}
-            <View style={styles.foodRow}>
+            <TouchableOpacity style={styles.foodRow} onPress={() => NavigationUtils.navigate('FoodDetailsScreen')}>
                 <Image source={require('app/assets/images/eggs.jpg')} resizeMode="cover" style={styles.foodImage}></Image>
                 <View style={styles.foodRowTextsContainer}>
                     <Text weight={FontWeights.MEDIUM} style={styles.foodRowTitle}>6x Scrambled Eggs</Text>
                     <Text weight={FontWeights.MEDIUM} type={TextTypes.PARAGRAPH} style={styles.foodRowCalories}>300 Calories</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
 
             <View style={styles.foodRow}>
                 <Image source={require('app/assets/images/strawberry.jpg')} resizeMode="cover" style={styles.foodImage}></Image>
