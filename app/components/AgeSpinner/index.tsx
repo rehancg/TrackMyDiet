@@ -20,12 +20,12 @@ const AgeSpinner: React.FC<IProps> = (props) => {
     const [size, onLayout] = useSize();
     const [selectedAge, setSelectedAge] = useState(0);
 
-    useFocusEffect(() => {
+    useEffect(() => {
         // if (props.defaultAge)
         setTimeout(() => {
             setSelectedAge(10);
         }, 500);
-    })
+    }, [])
 
     return (
         <>
@@ -38,7 +38,7 @@ const AgeSpinner: React.FC<IProps> = (props) => {
                     <WheelPicker
                         style={{ height: size?.height || 0, marginTop: 36 }}
                         data={AgeList}
-                        onItemSelected={setSelectedAge}
+                        onItemSelected={(age) => setSelectedAge(age)}
                         hideIndicator={true}
                         selectedItem={selectedAge}
                         selectedItemTextFontFamily='Poppins-SemiBold'

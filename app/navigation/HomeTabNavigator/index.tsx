@@ -6,6 +6,7 @@ import theme from 'app/theme/defaultTheme';
 import Icon from 'app/components/Icon'
 import CustomMealPlan from 'app/screens/CustomMealPlan';
 import Feed from 'app/screens/Feed';
+import Profile from 'app/screens/Profile';
 
 const TabBarIcon: React.FC<{
     focused: boolean;
@@ -54,8 +55,8 @@ const HomeTabNavigator: React.FC = () => {
                 }}
             />
             <HomeNavigatorTabs.Screen
-                name='HomeScreen4'
-                component={Home}
+                name='ProfileScreen'
+                component={Profile}
                 options={{
                     tabBarLabel: 'Profile',
                     tabBarIcon: (props) => <TabBarIcon {...props} name="user" />

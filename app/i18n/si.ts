@@ -1,6 +1,8 @@
 export default {
     App: {
-        "search": 'Search'
+        "search": 'Search',
+        "edit": 'Edit',
+        "save": "Save"
     },
     Welcome: {
         'index': {

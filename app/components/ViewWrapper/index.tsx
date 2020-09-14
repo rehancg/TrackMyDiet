@@ -104,7 +104,7 @@ const ViewWrapper: React.FC<IProps> = (props) => {
                                 </View>
                             )
                             : (
-                                <ScrollView bounces={false} contentContainerStyle={styles.scrollWrapper} scrollEnabled={!props.disableScroll}>
+                                <ScrollView showsVerticalScrollIndicator={false} bounces={false} contentContainerStyle={styles.scrollWrapper} scrollEnabled={!props.disableScroll}>
                                     <View style={[styles.container, props.style]}>
                                         {props.children}
                                     </View>
