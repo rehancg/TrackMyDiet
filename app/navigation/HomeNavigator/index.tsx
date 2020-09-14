@@ -7,6 +7,7 @@ import AddFoodsToMeal from 'app/screens/AddFoodsToMeal';
 import Icon from 'app/components/Icon';
 import theme from 'app/theme/defaultTheme';
 import FoodDetails from 'app/screens/FoodDetails';
+import Article from 'app/screens/Article';
 
 const HomeNavigatorStack = createStackNavigator();
 const HomeNavigator: React.FC = () => {
@@ -33,6 +34,13 @@ const HomeNavigator: React.FC = () => {
             <HomeNavigatorStack.Screen
                 name='FoodDetailsScreen'
                 component={FoodDetails}
+            />
+            <HomeNavigatorStack.Screen
+                name='ArticleScreen'
+                component={Article}
+                options={{
+                    headerShown: false
+                }}
             />
         </HomeNavigatorStack.Navigator>
     )

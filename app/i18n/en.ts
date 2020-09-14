@@ -134,5 +134,10 @@ export default {
             'numberOfServings': 'Number of Servings',
             'preferredTime': 'Prefferred time of the day'
         }
+    },
+    Feed: {
+        'index': {
+            'title': 'Feed'
+        }
     }
 }

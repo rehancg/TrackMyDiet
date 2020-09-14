@@ -53,7 +53,7 @@ const MealPlannerCard: React.FC<IProps> = (props) => {
             {/* Add new buttons */}
             {
                 !props.hideAddNew ? (
-                    <Button title="Add New" type={ButtonTypes.PRIMARY} onPress={onClickAddNew} flex style={styles.addNewButton} />
+                    <Button title="Add New" type={ButtonTypes.ACTION} onPress={onClickAddNew} flex style={styles.addNewButton} />
                 ) : null
             }
         </View>

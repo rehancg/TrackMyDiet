@@ -5,6 +5,7 @@ import Home from 'app/screens/Home';
 import theme from 'app/theme/defaultTheme';
 import Icon from 'app/components/Icon'
 import CustomMealPlan from 'app/screens/CustomMealPlan';
+import Feed from 'app/screens/Feed';
 
 const TabBarIcon: React.FC<{
     focused: boolean;
@@ -13,7 +14,7 @@ const TabBarIcon: React.FC<{
     name: string,
 }> = (props) => {
     return (
-        <Icon size={props.size} color={props.color} name={props.name} />
+        <Icon size={20} color={props.color} name={props.name} />
     )
 }
 
@@ -25,13 +26,14 @@ const HomeTabNavigator: React.FC = () => {
             tabBarOptions={{
                 activeTintColor: theme.TAB_BAR_ACTIVE_ICON_COLOR,
                 inactiveTintColor: theme.TAB_BAR_INACTIVE_ICON_COLOR,
-                showLabel: false,
+                showLabel: true,
             }}
         >
             <HomeNavigatorTabs.Screen
                 name='HomeScreen'
                 component={Home}
                 options={{
+                    tabBarLabel: 'Home',
                     tabBarIcon: (props) => <TabBarIcon {...props} name="home" />
                 }}
             />
@@ -39,13 +41,15 @@ const HomeTabNavigator: React.FC = () => {
                 name='CustomMealPlanScreen'
                 component={CustomMealPlan}
                 options={{
+                    tabBarLabel: 'Custom Plan',
                     tabBarIcon: (props) => <TabBarIcon {...props} name="calendar-alt" />
                 }}
             />
             <HomeNavigatorTabs.Screen
-                name='HomeScreen3'
-                component={Home}
+                name='FeedScreen'
+                component={Feed}
                 options={{
+                    tabBarLabel: 'Feed',
                     tabBarIcon: (props) => <TabBarIcon {...props} name="dashboard" />
                 }}
             />
@@ -53,6 +57,7 @@ const HomeTabNavigator: React.FC = () => {
                 name='HomeScreen4'
                 component={Home}
                 options={{
+                    tabBarLabel: 'Profile',
                     tabBarIcon: (props) => <TabBarIcon {...props} name="user" />
                 }}
             />

@@ -12,7 +12,7 @@ const CustomMealPlan = () => {
 
     return (
         <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
-            <Text style={styles.title} type={TextTypes.SUB_TITLE} weight={FontWeights.BOLD}>My Custom Meal Plan</Text>
+            {/* <Text style={styles.title} type={TextTypes.SUB_TITLE} weight={FontWeights.BOLD}>My Custom Meal Plan</Text> */}
             <MealSummary style={styles.mealSummary} />
 
             <FlatList
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     container: {
     },
     mealSummary: {
-        marginHorizontal: 32
+        marginHorizontal: 32,
+        marginTop: 16,
     },
     listContainer: {
         paddingBottom: 50,

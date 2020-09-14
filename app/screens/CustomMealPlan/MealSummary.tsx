@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
         backgroundColor: theme.BACKGROUND_PRIMARY,
         alignItems: 'center',
         justifyContent: 'center',
+        borderRadius: 10
     },
     icon: {
         fontSize: 36,
