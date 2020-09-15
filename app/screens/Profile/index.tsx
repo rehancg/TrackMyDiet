@@ -7,7 +7,16 @@ import theme from 'app/theme/defaultTheme';
 import { DEVICE_HEIGHT } from 'app/utils/UIHelper';
 import DisplayCard from './DisplayCard';
 import Text from 'app/components/Text';
-import { FontWeights } from 'app/types/entity/Texts';
+import { FontWeights, TextTypes } from 'app/types/entity/Texts';
+import NavigationUtils from 'app/utils/NavigationUtils';
+import EditName from './EditViews/EditName';
+import EditLanguage from './EditViews/EditLanguage';
+import EditAge from './EditViews/EditAge';
+import EditHeight from './EditViews/EditHeight';
+import EditWeight from './EditViews/EditWeight';
+import EditGoal from './EditViews/EditGoal';
+import EditDietType from './EditViews/EditDietType';
+import EditActivityLevel from './EditViews/EditActivityLevel';
 
 
 const Profile: React.FC = () => {
@@ -16,7 +25,50 @@ const Profile: React.FC = () => {
     const appTranslate = useTranslation('App')
 
     const onClickEdit = (key: string) => {
+        let Component = null;
+        let title = '';
 
+        switch (key) {
+            case 'name':
+                title = "Edit Name";
+                Component = <EditName />
+                break;
+            case 'gender':
+                break;
+            case 'age':
+                title = "Edit Age";
+                Component = <EditAge />
+                break;
+            case 'height':
+                title = "Edit Height";
+                Component = <EditHeight />
+                break;
+            case 'weight':
+                title = "Edit Weight";
+                Component = <EditWeight />
+                break;
+            case 'goal':
+                title = "Edit Goal";
+                Component = <EditGoal />
+                break;
+            case 'dietType':
+                title = "Edit Diet Type";
+                Component = <EditDietType />
+                break;
+            case 'activityLevel':
+                title = "Edit Activity Level";
+                Component = <EditActivityLevel />
+                break;
+            case 'lang':
+                title = "Update Language";
+                Component = <EditLanguage />
+                break;
+            default:
+                break;
+        }
+
+        if (Component)
+            NavigationUtils.navigate('EditProfileScreen', { title, Component })
     }
 
     return (
@@ -39,14 +91,21 @@ const Profile: React.FC = () => {
             </View>
 
             <View style={styles.content}>
+                <Text style={styles.sectionHeader} weight={FontWeights.BOLD} type={TextTypes.SUB_TITLE}>Personal Infomations</Text>
                 <DisplayCard id="name" title="Name" value="Rehan Chanaka" onPress={onClickEdit} editMode={isEdit} />
-                <DisplayCard id="lang" title="Language" value="En" onPress={onClickEdit} editMode={isEdit} />
                 <DisplayCard id="gender" title="Gender" value="Male" onPress={onClickEdit} editMode={isEdit} />
                 <DisplayCard id="age" title="Age" value={21} onPress={onClickEdit} editMode={isEdit} />
                 <DisplayCard id="height" title="Height" value={`1.7m`} onPress={onClickEdit} editMode={isEdit} />
                 <DisplayCard id="weight" title="Weight" value="50Kg" onPress={onClickEdit} editMode={isEdit} />
+
+                <Text style={[styles.sectionHeader, styles.sectionHeaderMargins]} weight={FontWeights.BOLD} type={TextTypes.SUB_TITLE}>Set your goals</Text>
                 <DisplayCard id="goal" title="Goal" value="Lose weight" onPress={onClickEdit} editMode={isEdit} />
                 <DisplayCard id="dietType" title="Diet Type" value="Pescentarian" onPress={onClickEdit} editMode={isEdit} />
+                <DisplayCard id="activityLevel" title="Activity Level" value="Normal" onPress={onClickEdit} editMode={isEdit} />
+
+
+                <Text style={[styles.sectionHeader, styles.sectionHeaderMargins]} weight={FontWeights.BOLD} type={TextTypes.SUB_TITLE}>Settings</Text>
+                <DisplayCard id="lang" title="Language" value="En" onPress={onClickEdit} editMode={isEdit} />
             </View>
 
         </ViewWrapper>
@@ -92,6 +151,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.20,
         shadowRadius: 2.62,
         elevation: 4,
+    },
+    sectionHeader: {
+        color: theme.TEXT_COLOR_DEFAULT,
+        paddingVertical: 8,
+        // paddingHorizontal: 16
+    },
+    sectionHeaderMargins: {
+        marginTop: 16
     },
     content: {
         paddingHorizontal: 32,

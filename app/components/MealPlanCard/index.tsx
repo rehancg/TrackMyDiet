@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Image, ViewStyle } from 'react-native';
+import { StyleSheet, View, Image, ViewStyle, TouchableOpacity } from 'react-native';
 
 import Text from 'app/components/Text';
 import theme from 'app/theme/defaultTheme';
@@ -7,12 +7,13 @@ import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import MealTypeBadge from '../MealTypeBadge';
 
 interface IProps {
-    style?: ViewStyle | ViewStyle[]
+    style?: ViewStyle | ViewStyle[],
+    onPress: () => void
 }
 
 const MealPlanCard: React.FC<IProps> = (props) => {
     return (
-        <View style={[styles.container, props.style]}>
+        <TouchableOpacity style={[styles.container, props.style]} onPress={props.onPress}>
             <Image source={require('app/assets/images/background_welcome.png')} style={styles.imageContainer} resizeMode="cover" />
 
             {/* Render Badges */}
@@ -50,7 +51,7 @@ const MealPlanCard: React.FC<IProps> = (props) => {
                     <Text type={TextTypes.BODY} weight={FontWeights.BOLD} style={styles.metaDataMicrosValue}>2g</Text>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

@@ -3,7 +3,11 @@ import { NavigationContainerRef, NavigationState, PartialState, DrawerActions, S
 
 export const navigationRef: React.RefObject<NavigationContainerRef> = React.createRef();
 
-function navigate(name: string, params?: ["", object | undefined]) {
+function navigate(name: string, params?: object | undefined) {
+    navigationRef.current?.navigate(name, params);
+}
+
+function navigateInto(name: string, params?: ["", object | undefined]) {
     navigationRef.current?.navigate(name, params);
 }
 

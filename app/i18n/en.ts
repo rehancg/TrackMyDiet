@@ -141,5 +141,19 @@ export default {
         'index': {
             'title': 'Feed'
         }
+    },
+    ProfileEdit: {
+        'index': {
+            'save': 'Save'
+        },
+        'name': {
+            'title': '',
+            'inputPlaceholder': 'Enter your name'
+        }
+    },
+    MealPlanDetails: {
+        'index': {
+            'title': 'Diet Plan Details'
+        }
     }
 }

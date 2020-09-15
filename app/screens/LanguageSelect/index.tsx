@@ -7,7 +7,7 @@ import Button from 'app/components/Button';
 import theme from 'app/theme/defaultTheme'
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import { DEVICE_HEIGHT } from 'app/utils/UIHelper';
-import LanguageCard from './LanguageCard';
+import LanguageCard from 'app/components/LanguageCard';
 import { Languages } from 'app/constants/languages';
 import { useTranslation } from 'react-i18next';
 import NavigationUtils from 'app/utils/NavigationUtils';

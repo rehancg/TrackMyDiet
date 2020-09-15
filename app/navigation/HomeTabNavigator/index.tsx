@@ -43,7 +43,7 @@ const HomeTabNavigator: React.FC = () => {
                 component={CustomMealPlan}
                 options={{
                     tabBarLabel: 'Custom Plan',
-                    tabBarIcon: (props) => <TabBarIcon {...props} name="calendar-alt" />
+                    tabBarIcon: (props) => <TabBarIcon {...props} name="pan" />
                 }}
             />
             <HomeNavigatorTabs.Screen
@@ -51,7 +51,7 @@ const HomeTabNavigator: React.FC = () => {
                 component={Feed}
                 options={{
                     tabBarLabel: 'Feed',
-                    tabBarIcon: (props) => <TabBarIcon {...props} name="dashboard" />
+                    tabBarIcon: (props) => <TabBarIcon {...props} name="lightbulb" />
                 }}
             />
             <HomeNavigatorTabs.Screen

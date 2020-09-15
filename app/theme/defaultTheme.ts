@@ -77,6 +77,17 @@ const theme = {
 
     MEAL_PLAN_TYPE_BADGE: {
         FREE_BACKGROUND: ColorPallet.GREEN
+    },
+
+    BOX_SHADOW: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 2.62,
+        elevation: 4,
     }
 }
 

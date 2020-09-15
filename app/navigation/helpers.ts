@@ -2,6 +2,7 @@ import theme from 'app/theme/defaultTheme';
 import { material } from 'react-native-typography'
 
 import Icon from 'app/components/Icon';
+import { TransitionPresets } from '@react-navigation/stack';
 
 const NavigationOptions = {
     stackNavigator: {
@@ -19,7 +20,8 @@ const NavigationOptions = {
                 color: theme.TEXT_COLOR_DEFAULT,
                 fontFamily: 'Poppins-SemiBold'
             },
-            headerBackTitle: ''
+            headerBackTitle: '',
+            ...TransitionPresets.SlideFromRightIOS,
         },
         secondary: {
             headerStyle: {

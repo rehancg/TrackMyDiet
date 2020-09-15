@@ -14,7 +14,7 @@ const LoginNavigator: React.FC = () => {
         <LoginNavigatorStack.Navigator
             initialRouteName='WelcomeScreen'
             screenOptions={{
-                ...NavigationOptions.stackNavigator.default
+                ...NavigationOptions.stackNavigator.default,
             }}
         >
             <LoginNavigatorStack.Screen

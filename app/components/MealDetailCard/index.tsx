@@ -17,7 +17,7 @@ interface IProps {
     style?: ViewStyle | ViewStyle[]
 }
 
-const MealPlannerCard: React.FC<IProps> = (props) => {
+const MealDetailCard: React.FC<IProps> = (props) => {
 
     const onClickAddNew = () => {
         NavigationUtils.navigate('AddNewFoodScreen')
@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default MealPlannerCard;
+export default MealDetailCard;

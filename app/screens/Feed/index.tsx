@@ -10,6 +10,8 @@ import ArticleCard from './ArticleCard';
 import Text from 'app/components/Text';
 import { FontWeights } from 'app/types/entity/Texts';
 import NavigationUtils from 'app/utils/NavigationUtils';
+import Header from './Header';
+import { DEVICE_WIDTH } from 'app/utils/UIHelper';
 
 const MockData = [
     { title: 'Shakes', selected: true },
@@ -20,6 +22,8 @@ const MockData = [
     { title: 'Cardio' },
     { title: 'Salads' },
 ]
+
+const CATEGORY_WIDTH = DEVICE_WIDTH * 0.2
 
 const Feed: React.FC = (props) => {
 
@@ -38,6 +42,8 @@ const Feed: React.FC = (props) => {
 
     return (
         <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY}>
+            <Header />
+
             {/* Category slider */}
             <View>
                 <Text style={styles.title} weight={FontWeights.BOLD}>Category</Text>
@@ -46,7 +52,9 @@ const Feed: React.FC = (props) => {
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     data={MockData}
-                    renderItem={({ item }) => <Category title={item.title} selected={item.selected} />}
+                    automaticallyAdjustContentInsets
+                    snapToInterval={CATEGORY_WIDTH}
+                    renderItem={({ item }) => <Category width={CATEGORY_WIDTH} title={item.title} selected={item.selected} />}
                     keyExtractor={(index) => `${index}`}
                     ItemSeparatorComponent={() => <View style={styles.categoryItemSeperator} />}
                 />
@@ -86,10 +94,10 @@ const styles = StyleSheet.create({
         height: 16
     },
     articles: {
-        paddingHorizontal: 16,
         marginTop: 8
     },
     articlesContainer: {
+        paddingHorizontal: 16,
         paddingBottom: 36
     }
 })

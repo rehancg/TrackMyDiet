@@ -10,6 +10,7 @@ import { TextTypes } from 'app/types/entity/Texts';
 import Icon from 'app/components/Icon';
 import { useTranslation } from 'react-i18next';
 import MealPlanCard from 'app/components/MealPlanCard';
+import NavigationUtils from 'app/utils/NavigationUtils';
 
 const RecommenedListHeader: React.FC = (props) => {
     const { t } = useTranslation('Home');
@@ -29,6 +30,10 @@ const RecommenedListHeader: React.FC = (props) => {
 const Home: React.FC = () => {
     const dispatch = useDispatch();
 
+    const onClickMealPlan = () => {
+        NavigationUtils.navigate('MealPlanDetailsScreen');
+    }
+
     return (
         <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
             <FlatList
@@ -38,7 +43,7 @@ const Home: React.FC = () => {
                 contentContainerStyle={styles.recommenedList}
                 data={[1, 2]}
                 keyExtractor={(index) => `recommened-meals-${index}`}
-                renderItem={() => <MealPlanCard style={styles.cardContainer} />}
+                renderItem={() => <MealPlanCard style={styles.cardContainer} onPress={onClickMealPlan} />}
                 ListHeaderComponent={() => <RecommenedListHeader />}
                 ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
             />

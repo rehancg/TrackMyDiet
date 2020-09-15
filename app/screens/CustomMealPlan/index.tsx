@@ -3,15 +3,16 @@ import { StyleSheet, View, FlatList } from 'react-native';
 
 import MealSummary from './MealSummary';
 import ViewWrapper from 'app/components/ViewWrapper';
-import Text from 'app/components/Text';
 import theme from 'app/theme/defaultTheme';
-import { TextTypes, FontWeights } from 'app/types/entity/Texts';
-import MealPlannerCard from './MealPlannerCard';
+import Header from './Header';
+import MealDetailCard from 'app/components/MealDetailCard';
 
 const CustomMealPlan = () => {
 
     return (
         <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
+            <Header />
+
             {/* <Text style={styles.title} type={TextTypes.SUB_TITLE} weight={FontWeights.BOLD}>My Custom Meal Plan</Text> */}
             <MealSummary style={styles.mealSummary} />
 
@@ -22,7 +23,7 @@ const CustomMealPlan = () => {
                 contentContainerStyle={styles.listContainer}
                 keyExtractor={(index) => `customMealPlan-${index}`}
                 ItemSeparatorComponent={() => <View style={styles.listSeperator} />}
-                renderItem={({ item, index }) => <MealPlannerCard title={item.title} data={[]} totalCalories={320} />}
+                renderItem={({ item, index }) => <MealDetailCard title={item.title} data={[]} totalCalories={320} />}
             />
         </ViewWrapper>
     )
@@ -32,13 +33,13 @@ const styles = StyleSheet.create({
     container: {
     },
     mealSummary: {
-        marginHorizontal: 32,
+        marginHorizontal: 16,
         marginTop: 16,
     },
     listContainer: {
         paddingBottom: 50,
         paddingTop: 16,
-        paddingHorizontal: 32
+        paddingHorizontal: 16
     },
     title: {
         color: theme.TEXT_COLOR_DEFAULT,

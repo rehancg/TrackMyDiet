@@ -17,7 +17,7 @@ interface IProps {
 const DisplayCard: React.FC<IProps> = (props) => {
     return (
         <>
-            <TouchableOpacity style={styles.container} onPress={() => props.onPress(props.id)}>
+            <TouchableOpacity disabled={!props.editMode} style={styles.container} onPress={() => props.onPress(props.id)}>
                 <Text style={styles.text} weight={FontWeights.MEDIUM}>{props.title}</Text>
                 <Text style={styles.text} weight={FontWeights.MEDIUM}>{props.value}</Text>
                 {
@@ -42,10 +42,10 @@ const styles = StyleSheet.create({
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 1,
         },
         shadowOpacity: 0.20,
-        shadowRadius: 2.62,
+        shadowRadius: 1.50,
         elevation: 4,
         justifyContent: 'space-between',
         marginVertical: 8
