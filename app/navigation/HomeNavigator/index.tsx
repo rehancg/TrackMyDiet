@@ -10,8 +10,10 @@ import FoodDetails from 'app/screens/FoodDetails';
 import Article from 'app/screens/Article';
 import EditView from 'app/screens/EditView';
 import MealDetails from 'app/screens/MealDetails';
+import HomeStackNavigator from '../HomeStackNavigator';
 
 export type HomeRootStackParamList = {
+    HomeStackNavigator: undefined,
     HomeTabNavigator: undefined;
     MealPlanDetailsScreen: undefined;
     AddNewFoodScreen: undefined;
@@ -24,7 +26,7 @@ const HomeNavigatorStack = createStackNavigator<HomeRootStackParamList>();
 const HomeNavigator: React.FC = () => {
     return (
         <HomeNavigatorStack.Navigator
-            initialRouteName='HomeTabNavigator'
+            initialRouteName='HomeStackNavigator'
             screenOptions={{
                 ...NavigationOptions.stackNavigator.default,
                 headerBackTitleVisible: false,
@@ -32,11 +34,11 @@ const HomeNavigator: React.FC = () => {
             }}
         >
             <HomeNavigatorStack.Screen
-                name='HomeTabNavigator'
+                name='HomeStackNavigator'
                 options={{
                     headerShown: false,
                 }}
-                component={HomeTabNavigator}
+                component={HomeStackNavigator}
             />
             <HomeNavigatorStack.Screen
                 name='MealPlanDetailsScreen'

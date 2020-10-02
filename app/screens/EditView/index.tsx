@@ -28,7 +28,7 @@ const EditView: React.FC<IProps> = (props) => {
     }, [])
 
     return (
-        <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_SECONDARY} barStyle={theme.BAR_STYLE_DEFAULT} style={styles.container}>
+        <ViewWrapper withoutScrollView isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_SECONDARY} barStyle={theme.BAR_STYLE_DEFAULT} style={styles.container}>
             {route.params.Component}
         </ViewWrapper>
     )

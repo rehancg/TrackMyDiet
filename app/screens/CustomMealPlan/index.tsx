@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
 
 import MealSummary from './MealSummary';
@@ -6,13 +6,20 @@ import ViewWrapper from 'app/components/ViewWrapper';
 import theme from 'app/theme/defaultTheme';
 import Header from './Header';
 import MealDetailCard from 'app/components/MealDetailCard';
+import { useNavigation } from '@react-navigation/native';
 
 const CustomMealPlan = () => {
 
-    return (
-        <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
-            <Header />
+    const navigation = useNavigation();
 
+    useEffect(() => {
+        navigation.setOptions({
+            title: 'Customize Meal Plan',
+        })
+    }, [])
+
+    return (
+        <ViewWrapper withoutScrollView withInsetsTop isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
             {/* <Text style={styles.title} type={TextTypes.SUB_TITLE} weight={FontWeights.BOLD}>My Custom Meal Plan</Text> */}
             <MealSummary style={styles.mealSummary} />
 

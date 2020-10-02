@@ -17,6 +17,7 @@ import EditWeight from './EditViews/EditWeight';
 import EditGoal from './EditViews/EditGoal';
 import EditDietType from './EditViews/EditDietType';
 import EditActivityLevel from './EditViews/EditActivityLevel';
+import Icon from 'app/components/Icon';
 
 
 const Profile: React.FC = () => {
@@ -72,9 +73,7 @@ const Profile: React.FC = () => {
     }
 
     return (
-        <ViewWrapper isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
-
-
+        <ViewWrapper isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
                 <Image style={styles.headerBackground} source={require('app/assets/images/foodDetailsBackground_left.png')} resizeMode="cover">
@@ -84,10 +83,15 @@ const Profile: React.FC = () => {
 
                 </Image>
 
-                {/* Right action */}
-                <TouchableOpacity style={styles.headerRightAction} hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }} onPress={() => setIsEdit(!isEdit)}>
-                    <Text style={styles.headerRightActionText} weight={FontWeights.BOLD}>{isEdit ? appTranslate.t('save') : appTranslate.t('edit')}</Text>
+                {/* left action */}
+                <TouchableOpacity style={styles.headerLeftAction} hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }} onPress={() => NavigationUtils.goBack()}>
+                    <Icon name="arrow-back" style={styles.headerLeftIcon} />
                 </TouchableOpacity>
+
+                {/* Right action */}
+                {/* <TouchableOpacity style={styles.headerRightAction} hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }} onPress={() => setIsEdit(!isEdit)}>
+                    <Text style={styles.headerRightActionText} weight={FontWeights.BOLD}>{isEdit ? appTranslate.t('save') : appTranslate.t('edit')}</Text>
+                </TouchableOpacity> */}
             </View>
 
             <View style={styles.content}>
@@ -119,6 +123,15 @@ const styles = StyleSheet.create({
     header: {
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    headerLeftAction: {
+        position: 'absolute',
+        left: 16,
+        top: 8,
+    },
+    headerLeftIcon: {
+        fontSize: 16,
+        color: theme.BACKGROUND_SECONDARY
     },
     headerRightAction: {
         position: 'absolute',

@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
         height: 16
     },
     addBtn: {
-        marginHorizontal: 16
+        marginHorizontal: 16,
+        marginBottom: 16
     }
 })
 

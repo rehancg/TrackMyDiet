@@ -37,7 +37,7 @@ const MealSummary: React.FC<IProps> = (props) => {
             </View>
 
             {/* Meta data - micros */}
-            <View style={styles.metaDataRowMicros}>
+            {/* <View style={styles.metaDataRowMicros}>
                 <View style={styles.metaDataColMicros}>
                     <Text type={TextTypes.PARAGRAPH} style={styles.metaDataMicrosTitle}>Protien</Text>
                     <Text type={TextTypes.BODY} weight={FontWeights.BOLD} style={styles.metaDataMicrosValue}>25g</Text>
@@ -52,7 +52,7 @@ const MealSummary: React.FC<IProps> = (props) => {
                     <Text type={TextTypes.PARAGRAPH} style={styles.metaDataMicrosTitle}>Fats</Text>
                     <Text type={TextTypes.BODY} weight={FontWeights.BOLD} style={styles.metaDataMicrosValue}>2g</Text>
                 </View>
-            </View>
+            </View> */}
 
         </>
     )

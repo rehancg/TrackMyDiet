@@ -15,7 +15,7 @@ const Article: React.FC = () => {
     const [scrollY, _] = useState(new Animated.Value(0));
 
     return (
-        <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
+        <ViewWrapper withoutScrollView isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
             <Animated.ScrollView
                 style={styles.container}
                 contentContainerStyle={styles.contentContainer}

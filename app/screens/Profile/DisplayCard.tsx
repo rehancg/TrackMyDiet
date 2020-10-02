@@ -17,7 +17,11 @@ interface IProps {
 const DisplayCard: React.FC<IProps> = (props) => {
     return (
         <>
-            <TouchableOpacity disabled={!props.editMode} style={styles.container} onPress={() => props.onPress(props.id)}>
+            <TouchableOpacity
+                // disabled={!props.editMode} 
+                style={styles.container}
+                onPress={() => props.onPress(props.id)}
+            >
                 <Text style={styles.text} weight={FontWeights.MEDIUM}>{props.title}</Text>
                 <Text style={styles.text} weight={FontWeights.MEDIUM}>{props.value}</Text>
                 {

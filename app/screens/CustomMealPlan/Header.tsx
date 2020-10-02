@@ -16,8 +16,8 @@ const Header: React.FC = () => {
 const styles = StyleSheet.create({
     container: {
         height: 50,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
+        // borderBottomLeftRadius: 10,
+        // borderBottomRightRadius: 10,
         backgroundColor: theme.BACKGROUND_PRIMARY,
         alignItems: 'center',
         justifyContent: 'center',

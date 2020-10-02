@@ -27,9 +27,9 @@ const FoodCard: React.FC<IProps> = (props) => {
                 </View>
 
                 <View>
-                    <Pressable style={[styles.addButton, selected ? styles.addButtonSelected : styles.addButtonDefault]} hitSlop={10} onPress={() => setSelected(!selected)}>
+                    {/* <Pressable style={[styles.addButton, selected ? styles.addButtonSelected : styles.addButtonDefault]} hitSlop={10} onPress={() => setSelected(!selected)}>
                         <Text style={[styles.addText, selected ? styles.addTextSelected : styles.addTextDefault]} type={TextTypes.BODY}>Add</Text>
-                    </Pressable>
+                    </Pressable> */}
                     <QuantityInput disabled={!selected} value={qty} onValueChange={setQty} style={styles.qtyPicker} />
                 </View>
             </View>

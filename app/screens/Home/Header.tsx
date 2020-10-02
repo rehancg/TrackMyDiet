@@ -1,13 +1,17 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity, GestureResponderEvent } from 'react-native'
+import { composeInitialProps, useTranslation } from 'react-i18next';
 
 import theme from 'app/theme/defaultTheme';
 import Text from 'app/components/Text';
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import Icon from 'app/components/Icon'
-import { useTranslation } from 'react-i18next';
 
-const Header: React.FC = () => {
+interface IProps {
+    onToggleDrawer: ((event: GestureResponderEvent) => void) | undefined
+}
+
+const Header: React.FC<IProps> = (props) => {
     const { t } = useTranslation('Home');
     return (
         <>
@@ -17,10 +21,10 @@ const Header: React.FC = () => {
                 <View style={styles.decoBottomLeft} />
                 <View style={styles.decoTopRight} />
 
-                <View style={styles.welcome}>
+                <TouchableOpacity style={styles.welcome} onPress={props.onToggleDrawer}>
                     <Text type={TextTypes.TITLE} weight={FontWeights.BOLD} style={styles.title}>{`${t('index.gm')}\nRehan`}</Text>
-                    <View style={styles.propic} />
-                </View>
+                    <Icon name="hamburger" style={styles.propic} />
+                </TouchableOpacity>
 
                 {/* Weight meta data */}
                 <View style={[styles.card, styles.bmiCard]}>
@@ -86,11 +90,8 @@ const styles = StyleSheet.create({
         color: theme.TEXT_COLOR_SECONDARY
     },
     propic: {
-        width: 44,
-        height: 44,
-        borderRadius: 44 / 2,
-        borderWidth: 2,
-        borderColor: theme.BACKGROUND_SECONDARY
+        fontSize: 44,
+        color: theme.TEXT_COLOR_SECONDARY
     },
     card: {
         height: 90,

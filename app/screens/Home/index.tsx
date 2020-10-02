@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, FlatList, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, FlatList, TouchableOpacity, View, GestureResponderEvent } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import Header from './Header';
@@ -11,15 +11,26 @@ import Icon from 'app/components/Icon';
 import { useTranslation } from 'react-i18next';
 import MealPlanCard from 'app/components/MealPlanCard';
 import NavigationUtils from 'app/utils/NavigationUtils';
+import NavigationDrawerModal from 'app/components/NavigationDrawerModal';
+import { useNavigation } from '@react-navigation/native';
 
-const RecommenedListHeader: React.FC = (props) => {
+interface IProps {
+    onToggleDrawer: ((event: GestureResponderEvent) => void) | undefined
+}
+
+const RecommenedListHeader: React.FC<IProps> = (props) => {
     const { t } = useTranslation('Home');
+    const navigation = useNavigation();
+
+    const handleNewMealAction = () => {
+        navigation.navigate('CustomMealPlanScreen');
+    }
 
     return (
         <View style={styles.listHeaderContainer}>
-            <Header />
+            <Header onToggleDrawer={props.onToggleDrawer} />
             <Text type={TextTypes.BODY} style={styles.listHeaderTitle}>{t('index.recommended')}</Text>
-            <TouchableOpacity style={styles.newMealCard}>
+            <TouchableOpacity style={styles.newMealCard} onPress={handleNewMealAction}>
                 <Icon name="meal" style={styles.newMealCardIcon} size={32} color={theme.TEXT_COLOR_DEFAULT} />
                 <Text style={styles.newMealCardText}>{t('index.createYourOwnPlan')}</Text>
             </TouchableOpacity>
@@ -29,25 +40,34 @@ const RecommenedListHeader: React.FC = (props) => {
 
 const Home: React.FC = () => {
     const dispatch = useDispatch();
+    const [showDrawer, setShowDrawer] = useState(false);
+
+    const toggleDrawer = () => {
+        setShowDrawer(!showDrawer)
+    }
+
 
     const onClickMealPlan = () => {
         NavigationUtils.navigate('MealPlanDetailsScreen');
     }
 
     return (
-        <ViewWrapper withoutScrollView isReady={true} withInsetsBottom withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
-            <FlatList
-                bounces={false}
-                showsVerticalScrollIndicator={false}
-                style={styles.recommenedListContainer}
-                contentContainerStyle={styles.recommenedList}
-                data={[1, 2]}
-                keyExtractor={(index) => `recommened-meals-${index}`}
-                renderItem={() => <MealPlanCard style={styles.cardContainer} onPress={onClickMealPlan} />}
-                ListHeaderComponent={() => <RecommenedListHeader />}
-                ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
-            />
-        </ViewWrapper>
+        <>
+            <ViewWrapper withoutScrollView isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
+                <FlatList
+                    bounces={false}
+                    showsVerticalScrollIndicator={false}
+                    style={styles.recommenedListContainer}
+                    contentContainerStyle={styles.recommenedList}
+                    data={[1, 2]}
+                    keyExtractor={(index) => `recommened-meals-${index}`}
+                    renderItem={() => <MealPlanCard style={styles.cardContainer} onPress={onClickMealPlan} />}
+                    ListHeaderComponent={() => <RecommenedListHeader onToggleDrawer={toggleDrawer} />}
+                    ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
+                />
+            </ViewWrapper>
+            <NavigationDrawerModal isVisible={showDrawer} onToggleDrawer={toggleDrawer} />
+        </>
     )
 }
 

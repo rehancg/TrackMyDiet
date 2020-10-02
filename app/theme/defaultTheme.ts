@@ -28,6 +28,7 @@ const theme = {
     BACKGROUND_PRIMARY: ColorPallet.GREEN,
     BACKGROUND_SECONDARY: ColorPallet.WHITE,
     BACKGROUND_TERTIARY: ColorPallet.LIGHT_GREY,
+    BACKGROUND_INVERT: ColorPallet.BLACK,
 
     // Button styles
     BUTTON_PRIMARY_BACKGROUND: ColorPallet.GREEN,
