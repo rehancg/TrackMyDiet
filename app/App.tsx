@@ -13,6 +13,7 @@ import 'app/i18n';
 import ThemeProvider from 'app/theme';
 import buildState from 'app/state';
 import NavigationContainer from 'app/navigation';
+import CustomLoader from './components/CustomLoader';
 
 export const { store, persistor } = buildState();
 
@@ -23,6 +24,7 @@ const App = () => {
         <ThemeProvider>
           <SafeAreaProvider>
             <NavigationContainer />
+            <CustomLoader />
           </SafeAreaProvider>
         </ThemeProvider>
       </PersistGate>

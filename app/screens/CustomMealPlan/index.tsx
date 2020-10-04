@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
     container: {
     },
     mealSummary: {
-        marginHorizontal: 16,
+        marginHorizontal: 32,
         marginTop: 16,
     },
     listContainer: {
         paddingBottom: 50,
         paddingTop: 16,
-        paddingHorizontal: 16
+        paddingHorizontal: 32
     },
     title: {
         color: theme.TEXT_COLOR_DEFAULT,

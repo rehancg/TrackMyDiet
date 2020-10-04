@@ -9,6 +9,7 @@ import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 interface IProps {
     title: string,
     onPress: ((event: GestureResponderEvent) => void) | null | undefined,
+    disabled?: boolean,
     type?: ButtonTypes,
     flex?: boolean, // For full width button
     style?: object
@@ -24,6 +25,7 @@ const CustomButton: React.FC<IProps> = (props) => {
     switch (props.type) {
         case ButtonTypes.PRIMARY:
             buttonContainerStyles.push(styles.primaryButtonContainer)
+            buttonContainerStyles.push(props.disabled ? styles.primaryButtonDisabledBackground : styles.primaryButtonBackground)
             buttonTextStyles.push(styles.primaryButtonTexts)
             break;
         case ButtonTypes.SECONDARARY:
@@ -36,6 +38,7 @@ const CustomButton: React.FC<IProps> = (props) => {
             break;
         default:
             buttonContainerStyles.push(styles.primaryButtonContainer)
+            buttonContainerStyles.push(props.disabled ? styles.primaryButtonDisabledBackground : styles.primaryButtonBackground)
             buttonTextStyles.push(styles.primaryButtonTexts)
             break;
     }
@@ -44,6 +47,7 @@ const CustomButton: React.FC<IProps> = (props) => {
         <Pressable
             style={({ pressed }) => [buttonContainerStyles, props.style, { opacity: pressed ? 0.8 : 1 }]}
             onPress={props.onPress}
+            disabled={props.disabled}
         >
             <Text style={buttonTextStyles} weight={FontWeights.MEDIUM}>{props.title}</Text>
         </Pressable>
@@ -70,6 +74,12 @@ const styles = StyleSheet.create({
         backgroundColor: theme.BUTTON_PRIMARY_BACKGROUND,
         borderWidth: 0,
         borderRadius: 4
+    },
+    primaryButtonBackground: {
+        backgroundColor: theme.BUTTON_PRIMARY_BACKGROUND,
+    },
+    primaryButtonDisabledBackground: {
+        backgroundColor: theme.BUTTON_PRIMARY_BACKGROUND_INACTIVE,
     },
     primaryButtonTexts: {
         color: theme.BUTTON_PRIMARY_TEXT,

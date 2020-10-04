@@ -28,7 +28,7 @@ const NavigationDrawerModal: React.FC<IProps> = (props) => {
     }
 
     return (
-        <Modal visible={props.isVisible} animationType="fade" transparent={true}>
+        <Modal visible={props.isVisible} animationType="fade" transparent={true} onDismiss={props.onToggleDrawer}>
             <View style={[styles.modal, styles.container]}>
                 <SafeAreaView style={styles.flex}>
                     <TouchableOpacity onPress={props.onToggleDrawer} hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }} style={styles.closeIconContainer}>

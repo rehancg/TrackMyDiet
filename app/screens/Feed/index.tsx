@@ -23,7 +23,7 @@ const MockData = [
     { title: 'Salads' },
 ]
 
-const CATEGORY_WIDTH = DEVICE_WIDTH * 0.2
+const CATEGORY_WIDTH = (DEVICE_WIDTH - 64) * 0.25
 
 const Feed: React.FC = (props) => {
 
@@ -43,10 +43,11 @@ const Feed: React.FC = (props) => {
     return (
         <ViewWrapper withInsetsTop withoutScrollView isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY}>
             {/* Category slider */}
-            <View>
-                <Text style={styles.title} weight={FontWeights.BOLD}>Category</Text>
+            <View style={styles.catogoriesContainer}>
+                {/* <Text style={styles.title} weight={FontWeights.BOLD}>Category</Text> */}
                 <FlatList
                     style={styles.categories}
+                    contentContainerStyle={styles.categoriesListContainer}
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     data={MockData}
@@ -95,8 +96,13 @@ const styles = StyleSheet.create({
         marginTop: 8
     },
     articlesContainer: {
-        paddingHorizontal: 16,
+        paddingHorizontal: 32,
         paddingBottom: 36
+    },
+    categoriesListContainer: {
+    },
+    catogoriesContainer: {
+        marginHorizontal: 32
     }
 })
 

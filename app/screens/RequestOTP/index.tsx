@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useEffect, useState } from 'react';
 import { StyleSheet, Image, TextInput, Platform, View } from 'react-native';
 
 import ViewWrapper from 'app/components/ViewWrapper';
@@ -10,14 +10,23 @@ import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
 import theme from 'app/theme/defaultTheme';
 import { useTranslation } from 'react-i18next';
 import NavigationUtils from 'app/utils/NavigationUtils';
+import { useDispatch } from 'react-redux';
+import thunks from 'app/thunks';
 
 const RequestOTP: React.FC = () => {
+    const dispatch = useDispatch();
     const { t } = useTranslation('RequestOTP');
+    const [mobileNo, setMobileNo] = useState<string>('');
     const mobileNumMaskRef = createRef<TextInput>();
 
     const onClickNext = () => {
-        NavigationUtils.navigate('VerifyOTPScreen')
+        dispatch(thunks.login.requestOtp(mobileNo));
+        // NavigationUtils.navigate('VerifyOTPScreen')
     }
+
+    useEffect(() => {
+        console.log("mobile no", mobileNo)
+    }, [mobileNo])
 
     return (
         <ViewWrapper isReady={true} withAnimation withSafeAreaView withKeyboardAvoidingView>
@@ -28,28 +37,24 @@ const RequestOTP: React.FC = () => {
                 <Text type={TextTypes.BODY}> {t('index.desc_3')}</Text>
             </Text>
 
-            {/* <TextInputMask
-                refInput={mobileNumMaskRef}
-                onChangeText={(formatted, extracted) => {
-                    console.log(formatted) // +1 (123) 456-78-90
-                    console.log(extracted) // 1234567890
-                }}
-                placeholder="123123213"
-                mask={"([000]) [000] [00] [00]"}
-                style={styles.mobileNumberContainer}
-                keyboardType="phone-pad"
-            /> */}
             <MaskedTextInput
                 onChangeMaskedText={(formatted, extracted) => {
-                    console.log(formatted) // +1 (123) 456-78-90
-                    console.log(extracted) // 1234567890
+                    setMobileNo(extracted || '');
                 }}
                 refInput={mobileNumMaskRef}
                 mask="(0[00]) [000] [00] [00]"
-                placeholder="Mobile Number" style={styles.mobileNumberContainer} keyboardType="phone-pad" />
+                placeholder="Mobile Number"
+                style={styles.mobileNumberContainer}
+                keyboardType="phone-pad" />
 
             {/* Continue button */}
-            <Button title={t('index.continue')} onPress={onClickNext} flex style={styles.footerButton} />
+            <Button
+                title={t('index.continue')}
+                onPress={onClickNext}
+                flex
+                disabled={mobileNo?.length != 9}
+                style={styles.footerButton}
+            />
         </ViewWrapper>
     )
 }

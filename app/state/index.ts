@@ -12,7 +12,7 @@ const buildState = (onCreate?: (dispatch: ThunkDispatch<IState, {}, AnyAction>) 
     const persistConfig: PersistConfig<CombinedState<IState>, any, any, any> = {
         key: 'root',
         storage: AsyncStorage,
-        blacklist: []
+        blacklist: ['loader']
     }
 
     const persistedReducer = persistReducer(persistConfig, reducer)

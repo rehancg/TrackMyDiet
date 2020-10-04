@@ -1,5 +1,7 @@
+import { ILoaderState } from "./loader";
 import { IUserState } from "./user";
 
 export interface IState {
-    loggedInUser: IUserState
+    loggedInUser: IUserState,
+    loader: ILoaderState
 }

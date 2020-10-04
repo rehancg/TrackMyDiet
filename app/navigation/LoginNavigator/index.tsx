@@ -7,8 +7,17 @@ import Welcome from 'app/screens/Welcome';
 import LanguageSelect from 'app/screens/LanguageSelect';
 import RequestOTP from 'app/screens/RequestOTP';
 import VerifyOTP from 'app/screens/VerifyOTP';
+import { IRequestOtpResponse } from 'app/types/api/IRequestOtpResponse';
 
-const LoginNavigatorStack = createStackNavigator();
+export type LoginStackParamList = {
+    WelcomeScreen: undefined,
+    LoginScreen: undefined,
+    LanguageSelectScreen: undefined,
+    RequestOTPScreen: undefined,
+    VerifyOTPScreen: IRequestOtpResponse,
+};
+
+const LoginNavigatorStack = createStackNavigator<LoginStackParamList>();
 const LoginNavigator: React.FC = () => {
     return (
         <LoginNavigatorStack.Navigator

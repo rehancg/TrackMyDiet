@@ -32,6 +32,7 @@ const theme = {
 
     // Button styles
     BUTTON_PRIMARY_BACKGROUND: ColorPallet.GREEN,
+    BUTTON_PRIMARY_BACKGROUND_INACTIVE: ColorPallet.LIGHT_GREY,
     BUTTON_PRIMARY_TEXT: ColorPallet.WHITE,
     BUTTON_PRIMARY_BORDER: 'transparent',
 

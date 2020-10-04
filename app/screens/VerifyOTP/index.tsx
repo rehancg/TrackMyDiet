@@ -11,10 +11,15 @@ import { DEVICE_HEIGHT, DEVICE_WIDTH, useSize } from 'app/utils/UIHelper';
 import theme from 'app/theme/defaultTheme';
 import { useTranslation } from 'react-i18next';
 import NavigationUtils from 'app/utils/NavigationUtils';
+import { RouteProp, useRoute } from '@react-navigation/native';
+import { LoginStackParamList } from 'app/navigation/LoginNavigator';
+
+type IScreenRouteProp = RouteProp<LoginStackParamList, 'VerifyOTPScreen'>;
 
 const VerifyOTP: React.FC = () => {
     const { t } = useTranslation('VerifyOTP');
     const [size, onLayout] = useSize();
+    const route = useRoute<IScreenRouteProp>()
 
     const onClickNext = () => {
         NavigationUtils.resetToScreen('OnBoading')

@@ -17,6 +17,7 @@ const HomeStackNavigator: React.FC = () => {
             screenOptions={{
                 ...NavigationOptions.stackNavigator.default,
                 headerBackTitleVisible: false,
+                headerTitleAlign: 'center',
                 headerBackImage: () => <Icon size={16} color={theme.TEXT_COLOR_DEFAULT} name="arrow-back" style={{ paddingHorizontal: 16 }} />
             }}
         >
