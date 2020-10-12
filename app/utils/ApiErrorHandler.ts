@@ -1,13 +1,17 @@
 import { Alert } from "react-native";
+import { isString } from 'lodash';
 
 export default (err: any) => {
     let msg = '';
-    switch (err?.response?.status) {
+    switch (err?.status) {
         case 401:
             msg = "Sorry this feature is only available for active subscribers!"
             break;
         default:
-            msg = err?.response?.message || ''
+            msg = isString(err?.data?.message) ? err?.data?.message : ''
     }
-    Alert.alert('Something went wrong!', msg)
+
+    setTimeout(() => {
+        Alert.alert('Something went wrong!', msg)
+    }, 300);
 }

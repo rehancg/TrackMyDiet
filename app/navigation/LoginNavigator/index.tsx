@@ -8,13 +8,15 @@ import LanguageSelect from 'app/screens/LanguageSelect';
 import RequestOTP from 'app/screens/RequestOTP';
 import VerifyOTP from 'app/screens/VerifyOTP';
 import { IRequestOtpResponse } from 'app/types/api/IRequestOtpResponse';
+import { useSelector } from 'react-redux';
+import { IState } from 'app/types/state';
 
 export type LoginStackParamList = {
     WelcomeScreen: undefined,
     LoginScreen: undefined,
     LanguageSelectScreen: undefined,
     RequestOTPScreen: undefined,
-    VerifyOTPScreen: IRequestOtpResponse,
+    VerifyOTPScreen: { telNo: string, data: IRequestOtpResponse },
 };
 
 const LoginNavigatorStack = createStackNavigator<LoginStackParamList>();

@@ -7,6 +7,7 @@ function navigate(name: string, params?: object | undefined) {
     navigationRef.current?.navigate(name, params);
 }
 
+
 function navigateInto(name: string, params?: ["", object | undefined]) {
     navigationRef.current?.navigate(name, params);
 }
@@ -50,5 +51,7 @@ export default {
     reset,
     resetToScreen,
     goBack,
-    popToTop
+    popToTop,
+    openDrawer,
+    closeDrawer
 }

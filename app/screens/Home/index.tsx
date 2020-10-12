@@ -43,7 +43,7 @@ const Home: React.FC = () => {
     const [showDrawer, setShowDrawer] = useState(false);
 
     const toggleDrawer = () => {
-        setShowDrawer(!showDrawer)
+        NavigationUtils.openDrawer()
     }
 
 
@@ -59,9 +59,9 @@ const Home: React.FC = () => {
                     showsVerticalScrollIndicator={false}
                     style={styles.recommenedListContainer}
                     contentContainerStyle={styles.recommenedList}
-                    data={[1, 2]}
+                    data={[{ imageUrl: 'https://images.unsplash.com/photo-1564675533183-b1a836ec6537?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80' }, { imageUrl: 'https://images.unsplash.com/photo-1593030668930-8130abedd2b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80' }]}
                     keyExtractor={(index) => `recommened-meals-${index}`}
-                    renderItem={() => <MealPlanCard style={styles.cardContainer} onPress={onClickMealPlan} />}
+                    renderItem={({ item }) => <MealPlanCard data={item} style={styles.cardContainer} onPress={onClickMealPlan} />}
                     ListHeaderComponent={() => <RecommenedListHeader onToggleDrawer={toggleDrawer} />}
                     ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
                 />

@@ -19,7 +19,7 @@ const CustomMealPlan = () => {
     }, [])
 
     return (
-        <ViewWrapper withoutScrollView withInsetsTop isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY} barStyle={theme.BAR_STYLE_SECONDARY} style={styles.container}>
+        <ViewWrapper withoutScrollView withInsetsTop isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_SECONDARY} barStyle={theme.BAR_STYLE_DEFAULT} style={styles.container}>
             {/* <Text style={styles.title} type={TextTypes.SUB_TITLE} weight={FontWeights.BOLD}>My Custom Meal Plan</Text> */}
             <MealSummary style={styles.mealSummary} />
 

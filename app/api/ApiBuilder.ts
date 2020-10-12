@@ -1,5 +1,4 @@
 import * as Axios from 'axios';
-import AsyncStorage from '@react-native-community/async-storage';
 import { getTokens, storeTokens } from 'app/utils/StorageUtils';
 import { ITokenRefreshResponse } from 'app/types/api/ITokenRefreshReponse';
 
@@ -40,7 +39,7 @@ API.interceptors.response.use((response) => {
 })
 
 export const setApiToken = (token: string) => {
-
+    API.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
 export default API;

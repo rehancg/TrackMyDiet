@@ -41,7 +41,7 @@ const Feed: React.FC = (props) => {
     }
 
     return (
-        <ViewWrapper withInsetsTop withoutScrollView isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_PRIMARY}>
+        <ViewWrapper withInsetsTop withoutScrollView isReady={true} withAnimation withSafeAreaView safeAreaBackgroundColor={theme.BACKGROUND_SECONDARY}>
             {/* Category slider */}
             <View style={styles.catogoriesContainer}>
                 {/* <Text style={styles.title} weight={FontWeights.BOLD}>Category</Text> */}

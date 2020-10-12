@@ -8,13 +8,14 @@ import MealTypeBadge from '../MealTypeBadge';
 
 interface IProps {
     style?: ViewStyle | ViewStyle[],
-    onPress: () => void
+    onPress: () => void,
+    data: { imageUrl: string }
 }
 
 const MealPlanCard: React.FC<IProps> = (props) => {
     return (
         <TouchableOpacity style={[styles.container, props.style]} onPress={props.onPress}>
-            <Image source={require('app/assets/images/background_welcome.png')} style={styles.imageContainer} resizeMode="cover" />
+            <Image source={{ uri: props.data.imageUrl }} style={styles.imageContainer} resizeMode="cover" />
 
             {/* Render Badges */}
             <View>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
         backgroundColor: theme.BACKGROUND_SECONDARY
     },
     imageContainer: {
-        height: 100,
+        height: 120,
         width: '100%',
         borderRadius: 10,
     },

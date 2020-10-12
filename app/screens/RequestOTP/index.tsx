@@ -9,24 +9,20 @@ import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import { DEVICE_HEIGHT, DEVICE_WIDTH } from 'app/utils/UIHelper';
 import theme from 'app/theme/defaultTheme';
 import { useTranslation } from 'react-i18next';
-import NavigationUtils from 'app/utils/NavigationUtils';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import thunks from 'app/thunks';
+import { IState } from 'app/types/state';
 
 const RequestOTP: React.FC = () => {
     const dispatch = useDispatch();
+    const isLoaderVisible = useSelector<IState>(state => state.loader.isVisible) as boolean;
     const { t } = useTranslation('RequestOTP');
     const [mobileNo, setMobileNo] = useState<string>('');
     const mobileNumMaskRef = createRef<TextInput>();
 
     const onClickNext = () => {
-        dispatch(thunks.login.requestOtp(mobileNo));
-        // NavigationUtils.navigate('VerifyOTPScreen')
+        dispatch(thunks.login.requestOtp(`0${mobileNo}`));
     }
-
-    useEffect(() => {
-        console.log("mobile no", mobileNo)
-    }, [mobileNo])
 
     return (
         <ViewWrapper isReady={true} withAnimation withSafeAreaView withKeyboardAvoidingView>
@@ -52,7 +48,7 @@ const RequestOTP: React.FC = () => {
                 title={t('index.continue')}
                 onPress={onClickNext}
                 flex
-                disabled={mobileNo?.length != 9}
+                disabled={mobileNo?.length != 9 || isLoaderVisible}
                 style={styles.footerButton}
             />
         </ViewWrapper>
