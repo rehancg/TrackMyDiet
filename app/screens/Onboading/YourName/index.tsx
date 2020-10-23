@@ -2,12 +2,18 @@ import React from 'react'
 
 import Text from 'app/components/Text';
 import TextInput from 'app/components/TextInput';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { TextTypes, FontWeights } from 'app/types/entity/Texts';
 import theme from 'app/theme/defaultTheme';
 import { useTranslation } from 'react-i18next';
+import { PickImage } from 'app/utils/ImagePickerUtils';
 
-const YourName: React.FC = () => {
+interface iProps {
+    setName: (text: string) => void,
+    name: string
+}
+
+const YourName: React.FC<iProps> = (props) => {
     const { t } = useTranslation('Onboading')
     return (
         <View style={styles.wrapper}>
@@ -15,12 +21,12 @@ const YourName: React.FC = () => {
                 <Text type={TextTypes.TITLE} style={styles.title}>{t('name.title')}</Text>
 
                 {/* Select profile pic */}
-                <View style={styles.proPic}>
+                <TouchableOpacity style={styles.proPic} onPress={PickImage}>
 
-                </View>
+                </TouchableOpacity>
 
                 {/* Name input */}
-                <TextInput placeholder={t('name.inputPlaceholder')} style={styles.nameInput} />
+                <TextInput value={props.name} placeholder={t('name.inputPlaceholder')} style={styles.nameInput} onChangeText={(text) => props.setName(text)} />
             </View>
         </View>
     )

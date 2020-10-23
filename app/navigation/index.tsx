@@ -19,12 +19,13 @@ import Profile from 'app/screens/Profile';
 import { NavigationOptions } from './helpers';
 import theme from 'app/theme/defaultTheme';
 import Icon from 'app/components/Icon';
+import Init from 'app/screens/Init';
 
 const MainStackNavigator = createStackNavigator();
 const MainStack: React.FC = () => {
     return (
         <MainStackNavigator.Navigator
-            initialRouteName='Login'
+            initialRouteName='Init'
             screenOptions={{
                 ...NavigationOptions.stackNavigator.default,
                 headerBackTitleVisible: false,
@@ -32,6 +33,13 @@ const MainStack: React.FC = () => {
                 headerBackImage: () => <Icon size={16} color={theme.TEXT_COLOR_DEFAULT} name="arrow-back" style={{ paddingHorizontal: 16 }} />
             }}
         >
+            <MainStackNavigator.Screen
+                name='Init'
+                component={Init}
+                options={{
+                    headerShown: false
+                }}
+            />
             <MainStackNavigator.Screen
                 name='Login'
                 component={LoginNavigator}

@@ -40,35 +40,35 @@ export default {
     Onboading: {
         'index': {
             'progressPrefix': 'STEP',
-            'next': 'Next Step',
-            'previous': 'Previous Step'
+            'next': 'ඉදිරියට',
+            'previous': 'ආපස්සට'
         },
         'name': {
-            'title': 'What \'s your Name?',
-            'inputPlaceholder': 'Name'
+            'title': 'ඔබේ නම කුමක්ද?',
+            'inputPlaceholder': 'නම'
         },
         'gender': {
-            'title': 'Select your Gender',
-            'male': 'Male',
-            'female': 'Female'
+            'title': 'ස්ත්‍රී පුරුශ භාවය තෝරන්න',
+            'male': 'පිරිමි',
+            'female': 'ගැහැනු'
         },
         'age': {
-            'title': 'How Old are you?'
+            'title': 'ඔබේ වයස කීයද?'
         },
         'height': {
-            'title': 'Select your Height',
+            'title': 'ඔබේ උස ඇතුලත් කරන්න',
         },
         'weight': {
-            'title': 'Select your Weight',
+            'title': 'ඔබේ බර ඇතුලත් කරන්න',
         },
         'goal': {
-            'title': 'What\'s your goal?'
+            'title': 'ඔබේ ඉලක්කය කුමක්ද?'
         },
         'type': {
-            'title': 'What\'s your diet type?'
+            'title': 'ඔබ කැමති diet type එක තෝරන්න?'
         },
         'activityLevel': {
-            'title': 'How Active are you?'
+            'title': 'ඔබේ දිනචර්යාව කෙසේද?'
         }
     },
     Ruler: {

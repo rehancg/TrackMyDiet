@@ -1,4 +1,4 @@
-import React, { useState, createRef } from 'react';
+import React, { useState, createRef, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import ViewPager from '@react-native-community/viewpager';
 import { useTranslation } from 'react-i18next';
@@ -20,12 +20,16 @@ import SelectGoal from './SelectGoal';
 import SelectDietType from './SelectDietType';
 import SelectActivityLevel from './SelectActivityLevel';
 import NavigationUtils from 'app/utils/NavigationUtils';
+import { useDispatch } from 'react-redux';
+import thunks from 'app/thunks';
 
 const numOfPages = 8;
 
 const Onboading: React.FC = (props) => {
     const viewPagerRef = createRef<ViewPager>();
+    const dispatch = useDispatch();
     const { t } = useTranslation('Onboading');
+    const [name, setName] = useState('');
     const [gender, setGender] = useState(Gender.MALE);
     const [age, setAge] = useState(21);
     const [goal, setGoal] = useState(2);
@@ -50,13 +54,17 @@ const Onboading: React.FC = (props) => {
         return Math.round(percentage);
     }
 
+    useEffect(() => {
+        dispatch(thunks.changeLanguage('si'))
+    }, [])
+
     return (
         <ViewWrapper isReady={true} withAnimation withSafeAreaView style={styles.container} >
             <ProgressBar progress={calculateProgress()} style={styles.progressBar} />
             <Text style={styles.progressText} type={TextTypes.PARAGRAPH}>{`${t('index.progressPrefix')} ${page + 1}/${numOfPages}`}</Text>
             <ViewPager ref={viewPagerRef} style={styles.viewPager} initialPage={0} scrollEnabled={false} onPageSelected={(e) => setPage(e.nativeEvent.position)}>
                 <View key={'onbording-name'}>
-                    <YourName />
+                    <YourName name={name} setName={setName} />
                 </View>
 
                 <View key={'onbording-gender'}>
