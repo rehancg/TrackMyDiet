@@ -7,6 +7,7 @@ import { TextTypes } from 'app/types/entity/Texts';
 import HeightRuler from 'app/components/HeightRuler';
 
 interface IProps {
+    setHeight: (height: number) => void
 }
 
 const SetHeight: React.FC<IProps> = (props) => {
@@ -17,7 +18,7 @@ const SetHeight: React.FC<IProps> = (props) => {
             <View style={styles.container}>
                 <Text type={TextTypes.TITLE} style={styles.title}>{t('height.title')}</Text>
                 <View style={styles.rulerContainer}>
-                    <HeightRuler />
+                    <HeightRuler setHeight={props.setHeight} />
                 </View>
             </View>
         </View>

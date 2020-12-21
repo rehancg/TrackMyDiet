@@ -1,5 +1,5 @@
 import React, { useState, createRef, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import ViewPager from '@react-native-community/viewpager';
 import { useTranslation } from 'react-i18next';
 
@@ -30,14 +30,29 @@ const Onboading: React.FC = (props) => {
     const dispatch = useDispatch();
     const { t } = useTranslation('Onboading');
     const [name, setName] = useState('');
+    const [height, setHeight] = useState(0);
+    const [weight, setWeight] = useState(0);
     const [gender, setGender] = useState(Gender.MALE);
     const [age, setAge] = useState(21);
     const [goal, setGoal] = useState(2);
     const [type, setType] = useState(2);
     const [activityLevel, setActivityLevel] = useState(2);
     const [page, setPage] = useState(0);
+    const [avator, setAvator] = useState('');
+    const [updatingProPic, setUpdatingProPic] = useState(false);
 
     const navigateNext = () => {
+        if (page == 0) {
+            if (name.length == 0) {
+                Alert.alert('Validation failed', 'Please complete all the fields to continue')
+                return;
+            }
+        }
+
+        else if (page == 3) {
+            console.log(height)
+        }
+
         if (page == (numOfPages - 1)) {
             NavigationUtils.resetToScreen('Home');
         } else
@@ -64,7 +79,7 @@ const Onboading: React.FC = (props) => {
             <Text style={styles.progressText} type={TextTypes.PARAGRAPH}>{`${t('index.progressPrefix')} ${page + 1}/${numOfPages}`}</Text>
             <ViewPager ref={viewPagerRef} style={styles.viewPager} initialPage={0} scrollEnabled={false} onPageSelected={(e) => setPage(e.nativeEvent.position)}>
                 <View key={'onbording-name'}>
-                    <YourName name={name} setName={setName} />
+                    <YourName name={name} setName={setName} setAvator={setAvator} avator={avator} updatingProPic={updatingProPic} setUpdatingProPic={setUpdatingProPic} />
                 </View>
 
                 <View key={'onbording-gender'}>
@@ -76,11 +91,11 @@ const Onboading: React.FC = (props) => {
                 </View>
 
                 <View key={'onbording-height'}>
-                    <SetHeight />
+                    <SetHeight setHeight={setHeight} />
                 </View>
 
                 <View key={'onbording-weight'}>
-                    <SetWeight />
+                    <SetWeight setWeight={setWeight} />
                 </View>
 
                 <View key={'onbording-goal'}>

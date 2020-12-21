@@ -1,10 +1,8 @@
 import { uploadMedia } from 'app/api/FileService';
-import { delay } from 'lodash';
 import ImagePicker from 'react-native-image-crop-picker';
-import { asyncWait } from './OtherUtils';
 
-const PickImage = () => {
-    ImagePicker.openPicker({
+const PickImage = (): Promise<string> => {
+    return ImagePicker.openPicker({
         width: 300,
         height: 400,
         cropping: true,
@@ -12,14 +10,11 @@ const PickImage = () => {
         writeTempFile: true
     }).then(async image => {
         try {
-            await asyncWait(300)
             const res = await uploadMedia(image);
-            console.log(res);
+            return res.data;
         } catch (error) {
-            console.log(error);
+            throw new Error(error)
         }
-    }).catch(err => {
-        console.log(err);
     })
 }
 

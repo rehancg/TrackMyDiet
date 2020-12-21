@@ -7,6 +7,7 @@ import { TextTypes } from 'app/types/entity/Texts';
 import WeightSetter from 'app/components/WeightSetter';
 
 interface IProps {
+    setWeight: (value: any) => void
 }
 
 const SetWeight: React.FC<IProps> = (props) => {
@@ -17,7 +18,7 @@ const SetWeight: React.FC<IProps> = (props) => {
             <View style={styles.container}>
                 <Text type={TextTypes.TITLE} style={styles.title}>{t('weight.title')}</Text>
                 <View>
-                    <WeightSetter />
+                    <WeightSetter setWeight={props.setWeight} />
                 </View>
             </View>
         </View>

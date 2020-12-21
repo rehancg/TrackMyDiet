@@ -34,7 +34,6 @@ const verifyOtp = (telNo: string, referenceNo: string, otp: number): ThunkAction
         dispatch(actions.loader.hideLoader());
         NavigationUtils.navigate("OnBoading");
     } catch (error) {
-        console.log("error", error)
         dispatch(actions.loader.hideLoader());
         ApiErrorHandler(error);
     }

@@ -5,9 +5,9 @@ import { ITokenRefreshResponse } from 'app/types/api/ITokenRefreshReponse';
 const API_RETRY_ATTEMPTS = 2;
 
 const API = Axios.default.create({
-    baseURL: 'http://143.110.186.112',
+    baseURL: 'http://localhost:1024', //'http://143.110.186.112',
     timeout: 30000,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'RetryCount': 0 },
 });
 
 API.interceptors.response.use((response) => {
@@ -18,7 +18,7 @@ API.interceptors.response.use((response) => {
             try {
                 const { refreshToken, accessToken } = await getTokens();
                 // refresh tokens 
-                const tokenRefreshResponse = await API.post<ITokenRefreshResponse>('/token/renew', {
+                const tokenRefreshResponse = await API.post<ITokenRefreshResponse>('/auth/token/renew', {
                     accessToken: accessToken,
                     refreshToken: refreshToken
                 })
@@ -26,7 +26,7 @@ API.interceptors.response.use((response) => {
                 await storeTokens(tokenRefreshResponse.data);
                 err.config.headers.Authorization = `Bearer ${tokenRefreshResponse.data.accessToken}`
                 err.config.headers.RetryCount = err.config.headers.RetryCount + 1;
-                return API.request(err.config);
+                return await API.request(err.config);
             } catch (error) {
                 return Promise.reject(err.response)
             }

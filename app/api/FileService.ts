@@ -19,11 +19,12 @@ const uploadMedia = async (media: ImageOrVideo): Promise<AxiosResponse<string>> 
     var blob = {
         uri: media.path,
         name: media.filename,
+        type: 'image/jpeg',
     };
 
-    var body = new FormData();
-    body.append('upload', blob)
-    return API.post('/file_upload', body);
+    var form = new FormData();
+    form.append('upload', blob)
+    return await API.post('/file_upload', form, { headers: { ...API.defaults.headers, 'Content-Type': 'multipart/form-data' } });
 }
 
 export { uploadMedia }

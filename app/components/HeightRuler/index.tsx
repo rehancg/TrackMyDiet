@@ -12,8 +12,13 @@ import { DEVICE_HEIGHT, DEVICE_WIDTH, useSize } from 'app/utils/UIHelper'
 import { TextTypes } from 'app/types/entity/Texts';
 import theme from 'app/theme/defaultTheme';
 import ToggleButton from '../ToggleButton';
+import { toFeet } from 'app/utils/OtherUtils';
 
 const ITEM_HEIGHT = 15;
+
+interface iProps {
+    setHeight: (height: number) => void
+}
 
 const RulerValue: React.FC<{ item: number }> = (props) => {
     return (
@@ -21,15 +26,15 @@ const RulerValue: React.FC<{ item: number }> = (props) => {
     )
 }
 
-const HeightRuler: React.FC = () => {
+const HeightRuler: React.FC<iProps> = (props) => {
     const { t } = useTranslation('Ruler')
     const [size, onLayout] = useSize();
     const [height, setHeight] = useState(160);
-    const [unit, setUnit] = useState('cm')
+    const [unit, setUnit] = useState('feet')
     const data = range(100, 250)
     const [scrollY, _] = useState(new Animated.Value(0));
     const flatListRef = createRef<FlatList<number>>();
-    const units = [{ shortCode: 'm', title: 'Meters' }, { shortCode: 'cm', title: 'CM' }]
+    const units = [{ shortCode: 'cm', title: 'CM' }, { shortCode: 'feet', title: 'Feet' }]
 
     useFocusEffect(() => {
         setTimeout(() => {
@@ -44,12 +49,21 @@ const HeightRuler: React.FC = () => {
         const scrollOffset = (scrollY as any)._value;
         const focusIndex = Math.ceil((scrollOffset! / ITEM_HEIGHT));
         setHeight(data[focusIndex])
+        if (props.setHeight) props.setHeight(data[focusIndex]);
     }
 
     const setDefaultValue = (value: number) => {
         const offset = (value - data[0]);
         const index = offset
         flatListRef.current?.scrollToIndex({ index });
+    }
+
+    const renderHeight = () => {
+        if (unit == 'cm') {
+            return `${height} cm`;
+        } else if (unit == 'feet') {
+            return toFeet(height);
+        }
     }
 
     // @TODO
@@ -97,7 +111,7 @@ const HeightRuler: React.FC = () => {
                     </View>
                 </View>
             </View>
-            <TextInput value={`${unit == 'cm' ? height : (height * 0.01).toFixed(2)}${unit}`} style={styles.heightInput} editable={false} />
+            <TextInput value={renderHeight()} style={styles.heightInput} editable={false} />
         </View>
     )
 }

@@ -9,7 +9,6 @@ import NavigationUtils from 'app/utils/NavigationUtils';
 const DrawerContent: React.FC = () => {
 
     const handleOnClickMenuItem = (key: string) => {
-        console.log("Navigate ", key)
         NavigationUtils.navigate(key);
         NavigationUtils.closeDrawer();
     }

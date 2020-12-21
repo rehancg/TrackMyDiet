@@ -14,13 +14,25 @@ import theme from 'app/theme/defaultTheme';
 import ToggleButton from '../ToggleButton';
 import { ScrollView } from 'react-native-gesture-handler';
 
+interface iProps {
+    setWeight: (value: number) => void
+}
 
-const WeightSetter: React.FC = () => {
+const WeightSetter: React.FC<iProps> = (props) => {
     const { t } = useTranslation('Scale')
     const [size, onLayout] = useSize();
-    const [weight, setWeight] = useState(100);
+    const [weight, setWeight] = useState(60);
     const [unit, setUnit] = useState('kg')
     const units = [{ shortCode: 'kg', title: 'KG' }, { shortCode: 'lbs', title: 'LBS' }]
+
+    const onChangeSliderValue = (value: any) => {
+        setWeight(value[0])
+        if (props.setWeight) {
+            const calculatedValue = unit == 'lbs' ? (value[0] * 0.453592).toFixed(2) : value[0];
+            props.setWeight(calculatedValue);
+        }
+    }
+
 
     return (
         <View onLayout={onLayout}>
@@ -31,23 +43,23 @@ const WeightSetter: React.FC = () => {
                 <Image resizeMode="stretch" style={[styles.manVector]} source={require('app/assets/images/man_on_scale.png')} />
             </View>
 
-            <TextInput value={` ${weight.toFixed(2)}`} style={styles.heightInput} editable={false} />
+            <TextInput value={` ${weight.toFixed(1)} ${unit}`} style={styles.heightInput} editable={false} />
             <Slider
                 containerStyle={[styles.slider, { width: size?.width || 0 }]}
                 value={weight}
-                onValueChange={value => setWeight(value[0])}
+                onValueChange={onChangeSliderValue}
                 maximumTrackTintColor={theme.SLIDER_BACKGROUND}
                 minimumTrackTintColor={theme.SLIDER_BACKGROUND}
-                maximumValue={300}
-                minimumValue={30}
-                step={1}
+                maximumValue={220}
+                minimumValue={40}
+                step={0.5}
                 thumbStyle={styles.thumbStyle}
                 trackStyle={styles.trackStyle}
                 thumbTouchSize={styles.thumbTouchSize}
             />
             <View style={styles.sliderX}>
-                <Text>30{unit}</Text>
-                <Text>300{unit}</Text>
+                <Text>40{unit}</Text>
+                <Text>220{unit}</Text>
             </View>
         </View>
     )

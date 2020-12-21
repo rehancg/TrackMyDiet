@@ -6,6 +6,8 @@ import theme from 'app/theme/defaultTheme';
 import { IState } from 'app/types/state';
 import { IUserState } from 'app/types/state/user';
 import NavigationUtils from 'app/utils/NavigationUtils';
+import { setApiToken } from 'app/api/ApiBuilder';
+import { getTokens } from 'app/utils/StorageUtils';
 
 const Init: React.FC = () => {
 
@@ -14,14 +16,21 @@ const Init: React.FC = () => {
     useEffect(() => {
         setTimeout(() => {
             if (loggedInUser.id && loggedInUser.calory_requirement) {
+                setTokens()
                 NavigationUtils.navigate('Home')
             } else if (loggedInUser.id && !loggedInUser.calory_requirement) {
+                setTokens()
                 NavigationUtils.navigate('OnBoading')
             } else {
                 NavigationUtils.navigate('Login')
             }
         }, 500);
     }, [])
+
+    const setTokens = async () => {
+        const { accessToken } = await getTokens();
+        setApiToken(accessToken);
+    }
 
     return (
         <View style={styles.container}>
