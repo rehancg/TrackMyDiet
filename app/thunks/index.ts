@@ -1,7 +1,10 @@
 import changeLanguage from './changeLanguage';
+import * as login from './login';
+
 
 const thunks = {
-    changeLanguage
+    changeLanguage,
+    login
 };
 
 export default thunks;
